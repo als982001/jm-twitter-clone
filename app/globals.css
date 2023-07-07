@@ -5,6 +5,10 @@
 
   --twitter-color: #00acee;
   --twitter-color-dark: #1d8cd9;
+  --font-dark: #70757b;
+  --bg-dark: #eff3f4;
+  --bg-light: #f9f9f9;
+  --hover-delay: all 0.3s;
 }
 
 * {
@@ -14,8 +18,14 @@
 }
 
 body {
-  width: 100%vw;
+  width: 1260px;
   height: 100vh;
+  margin: 0 auto;
+  position: relative;
+}
+
+li {
+  list-style-type: none;
 }
 
 /*

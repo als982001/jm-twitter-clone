@@ -1,0 +1,113 @@
+#sidebar {
+  width: 280px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 0;
+}
+
+.sidebar__menus {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__twitter__logo__wrapper {
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.sidebar__twitter__logo {
+  width: 50px;
+  height: 50px;
+  color: var(--twitter-color);
+}
+
+.sidebar__menu {
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+}
+
+.sidebar__menu__texts {
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  font-size: 26px;
+  padding: 0 20px;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.sidebar__menu__texts:hover {
+  background-color: gainsboro;
+}
+
+.sidebar__menu__logo {
+  margin-right: 20px;
+}
+
+.sidebar__twit__button {
+  width: 80%;
+  height: 50px;
+  border-radius: 50px;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  background-color: var(--twitter-color);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  box-shadow: 0px 5px 10px black;
+  transition: var(--hover-delay);
+}
+
+.sidebar__twit__button:hover {
+  background-color: var(--twitter-color-dark);
+}
+
+.sidebar__user {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__user__icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.sidebar__user__texts {
+  width: 180px;
+  height: 100%;
+  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.sidebar__user__text {
+  margin: 3px 0;
+}
+
+.sidebar__user__etc {
+  width: 50px;
+  height: 30px;
+}
+
+#nickname {
+  color: gray;
+}

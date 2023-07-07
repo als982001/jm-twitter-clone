@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "./LeftSidebar.module.css";
 import {
   AiOutlineTwitter,
   AiTwotoneHome,
@@ -11,7 +11,7 @@ import { CiViewList, CiCircleMore } from "react-icons/ci";
 import { BsBell, BsBookmark, BsThreeDots } from "react-icons/bs";
 import { BiSolidUserCircle } from "react-icons/bi";
 
-export default function Sidebar() {
+export default function LeftSidebar() {
   return (
     <nav id={styles.sidebar}>
       <ul className={styles.sidebar__menus}>

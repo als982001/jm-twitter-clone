@@ -1,4 +1,11 @@
 .main {
+  max-width: 600px;
   width: 100%;
   height: auto;
+  height: 500px;
+  background-color: whitesmoke;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  position: absolute;
+  left: 280px;
 }
