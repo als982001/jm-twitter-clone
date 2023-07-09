@@ -1,0 +1,51 @@
+.sidebar__container {
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--bg-light);
+  margin: 5px 0;
+}
+
+#sidebar__trend__title {
+  padding: 15px;
+  padding-right: 0px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#sidebar__trend__container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  padding: 10px 20px;
+  padding-right: 0px;
+  position: relative;
+  transition: var(--hover-delay);
+}
+
+#sidebar__trend__container:hover {
+  background-color: var(--bg-dark);
+}
+
+#sidebar__trend__location,
+#sidebar__trend__twitnum {
+  color: var(--font-dark);
+  font-weight: 400;
+}
+
+#sidebar__trend__content {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#sidebar__trend__threedots {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: var(--hover-delay);
+  padding: 5px;
+  border-radius: 100%;
+}
+
+#sidebar__trend__threedots:hover {
+  background-color: #dfe8f1;
+}

@@ -1,4 +1,4 @@
-import styles from "../RightSidebar.module.css";
+import styles from "./Styles/UserAuth.module.css";
 
 export default function UserAuth() {
   return (

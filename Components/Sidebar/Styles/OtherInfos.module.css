@@ -1,0 +1,21 @@
+#sidebar__otherinfo__wrapper {
+  height: auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.sidebar__otherinfo__container {
+  display: flex;
+  align-items: center;
+  margin: 2px 0;
+}
+
+.sidebar__otherinfo__container h6 {
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 15px;
+}
+
+.sidebar__otherinfo__container h6:hover {
+  border-bottom: 1px solid black;
+}

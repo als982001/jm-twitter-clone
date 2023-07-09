@@ -1,0 +1,15 @@
+#sidebar {
+  width: 380px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-left: 30px;
+}
+
+#sidebar__container {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}

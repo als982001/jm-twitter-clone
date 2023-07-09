@@ -1,4 +1,4 @@
-import styles from "../RightSidebar.module.css";
+import styles from "./Styles/Trends.module.css";
 import Trend from "./Trend";
 
 interface ITrends {
@@ -15,7 +15,7 @@ export default async function Trends() {
   const trends: ITrends[] = await response.json();
 
   return (
-    <section className={styles.sidebar__container} id={styles.sidebar__trend}>
+    <section className={styles.sidebar__container}>
       <h3 id={styles.sidebar__trend__title}>나를 위한 트렌드</h3>
       {trends.map((trend) => (
         <Trend key={trend.id + ""} trend={trend} />

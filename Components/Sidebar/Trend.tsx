@@ -1,4 +1,4 @@
-import styles from "../RightSidebar.module.css";
+import styles from "./Styles/Trends.module.css";
 import { BsThreeDots } from "react-icons/bs";
 
 interface IProps {

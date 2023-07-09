@@ -1,0 +1,66 @@
+.sidebar__container {
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--bg-light);
+  margin: 5px 0;
+}
+
+#sidebar__recommend__title {
+  padding: 15px;
+  padding-right: 0px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#sidebar__recommend__container {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: var(--hover-delay);
+}
+
+#sidebar__recommend__container:hover {
+  background-color: gainsboro;
+}
+
+#sidebar__recommend__userinfo {
+  display: flex;
+  align-items: center;
+}
+
+#sidebar__recommend__icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  margin-right: 15px;
+}
+
+#sidebar__recommend__button {
+  width: 70px;
+  height: 35px;
+  border-radius: 40px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+#sidebar__recommend__nickname {
+  font-weight: bold;
+}
+
+#sidebar__recommend__id {
+  font-size: 16px;
+  color: var(--font-dark);
+}
+
+#sidebar__recommend__more {
+  font-size: 17px;
+  font-weight: 500;
+  padding: 10px;
+  color: var(--twitter-color);
+}

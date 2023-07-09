@@ -1,5 +1,7 @@
 import RightSideInput from "./Input/RightSideInput";
 import styles from "./RightSidebar.module.css";
+import OtherInfos from "./Sidebar/OtherInfos";
+import RecommendFollows from "./Sidebar/RecommendFollows";
 import Trends from "./Sidebar/Trends";
 import UserAuth from "./Sidebar/UserAuth";
 
@@ -7,10 +9,12 @@ export default function RightSidebar() {
   return (
     <nav id={styles.sidebar}>
       <RightSideInput />
-      <UserAuth />
-      <Trends />
-      <section id={styles.sidebar__recommend__follows}>팔로우추천</section>
-      <section id={styles.sidebar__footer}>이용약관등</section>
+      <div id={styles.sidebar__container}>
+        <UserAuth />
+        <Trends />
+        <RecommendFollows />
+        <OtherInfos />
+      </div>
     </nav>
   );
 }
