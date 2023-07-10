@@ -1,5 +1,6 @@
 .sidebar__container {
   width: 100%;
+
   border-radius: 20px;
   background-color: var(--bg-light);
   margin: 5px 0;

@@ -1,6 +1,6 @@
 #sidebar {
   width: 380px;
-  height: auto;
+  height: 100%;
   position: absolute;
   right: 0;
   top: 0;
@@ -8,8 +8,12 @@
 }
 
 #sidebar__container {
+  width: 350px;
+  height: 500px;
   margin-top: 70px;
   display: flex;
   flex-direction: column;
   z-index: 1;
+  position: sticky;
+  top: -560px;
 }

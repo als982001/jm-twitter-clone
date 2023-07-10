@@ -15,10 +15,7 @@ export default async function RecommendFollows() {
   const recommends: IRecommendFollows[] = await response.json();
 
   return (
-    <section
-      className={styles.sidebar__container}
-      id={styles.sidebar__recommends__container}
-    >
+    <section className={styles.sidebar__container}>
       <h3 id={styles.sidebar__recommend__title}>팔로우 추천</h3>
       {recommends.map((recommend) => (
         <RecommendFollow recommend={recommend} />

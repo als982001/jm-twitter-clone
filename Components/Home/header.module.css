@@ -1,0 +1,43 @@
+#header {
+  width: 600px;
+  height: 100px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+
+#header__top {
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#header__bottom {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: var(--main-border);
+}
+
+.header__bottom__button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--hover-delay);
+}
+
+.header__bottom__button:hover {
+  background-color: gainsboro;
+}
+
+.header__bottom__content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+}

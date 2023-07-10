@@ -109,10 +109,6 @@ section {
   display: none;
 }
 
-body {
-  line-height: 1;
-}
-
 menu,
 ol,
 ul {
@@ -147,6 +143,7 @@ table {
   --font-dark: #70757b;
   --bg-dark: #eff3f4;
   --bg-light: #f9f9f9;
+  --main-border: 1px solid #eef3f5;
   --hover-delay: all 0.3s;
 }
 
@@ -173,7 +170,8 @@ a {
 
 body {
   width: 1260px;
-  height: 100vh;
+  min-height: 1000vh;
+  height: auto;
   margin: 0 auto;
   position: relative;
 }
