@@ -16,7 +16,7 @@ export const authOptions = {
       //1. 로그인페이지 폼 자동생성해주는 코드
       name: "credentials",
       credentials: {
-        id: { label: "text", type: "text" },
+        email: { label: "email", type: "text" },
         password: { label: "password", type: "password" },
       },
 
@@ -24,12 +24,12 @@ export const authOptions = {
       //직접 DB에서 아이디,비번 비교하고
       //아이디,비번 맞으면 return 결과, 틀리면 return null 해야함
       async authorize(credentials) {
-        let db = (await connectDB).db("practice");
+        let db = (await connectDB).db("portfolio");
         let user = await db
           .collection("user_cred")
-          .findOne({ id: credentials.id });
+          .findOne({ email: credentials.email });
         if (!user) {
-          console.log("해당 아이디는 없음");
+          console.log("해당 이메일은 없음");
           return null;
         }
         const pwcheck = await bcrypt.compare(
@@ -62,6 +62,7 @@ export const authOptions = {
       }
       return token;
     },
+
     //5. 유저 세션이 조회될 때 마다 실행되는 코드
     session: async ({ session, token }) => {
       session.user = token.user;
@@ -69,7 +70,7 @@ export const authOptions = {
     },
   },
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: "1q2w3e4r",
   adapter: MongoDBAdapter(connectDB),
 };
 export default NextAuth(authOptions);

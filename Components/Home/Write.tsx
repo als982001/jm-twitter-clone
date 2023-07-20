@@ -7,13 +7,20 @@ import {
 } from "react-icons/ai";
 import { SlCalender } from "react-icons/sl";
 import { FiMapPin } from "react-icons/fi";
+import useTwit from "@/Hooks/useTwit";
 
 export default function Write() {
+  const { content, writeTwit, postTwit } = useTwit();
+
   return (
-    <section id={styles.write}>
+    <form onSubmit={postTwit} id={styles.write}>
       <section id={styles.write__input__space}>
         <section id={styles.write__user__icon} />
-        <input id={styles.write__input} />
+        <input
+          id={styles.write__input}
+          value={content}
+          onChange={(event) => writeTwit(event)}
+        />
       </section>
       <section id={styles.write__options}>
         <section id={styles.write__options__row}>
@@ -38,6 +45,6 @@ export default function Write() {
         </section>
         <button id={styles.write__button}>트윗하기</button>
       </section>
-    </section>
+    </form>
   );
 }

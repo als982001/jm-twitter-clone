@@ -6,13 +6,11 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     const body = await JSON.parse(req.body);
-    const { id, email, password } = body;
-
-    console.log(`id: ${id}  password: ${password}  email: ${email}`);
+    const { nickname, email, password } = body;
 
     const hash = await bcrypt.hash(password, 10);
 
-    if (id.length === 0 || email.length === 0 || password.length === 0) {
+    if (nickname.length === 0 || email.length === 0 || password.length === 0) {
       return res.status(500).json("빈 칸 없게 하세요!");
     }
 
@@ -20,13 +18,11 @@ export default async function handler(req, res) {
       .collection("user_cred")
       .findOne({ email: email });
 
-    console.log(sameEmailAccount);
-
     if (sameEmailAccount) {
       return res.status(500).json("중복 계정이 존재합니다.");
     }
 
-    const newAccount = { id, email, password: hash };
+    const newAccount = { nickname, email, password: hash };
 
     await db.collection("user_cred").insertOne(newAccount);
 

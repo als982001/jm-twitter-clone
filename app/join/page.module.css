@@ -79,3 +79,8 @@
   color: var(--twitter-color);
   cursor: pointer;
 }
+
+#join__Loader {
+  font-size: 50px;
+  font-weight: bold;
+}

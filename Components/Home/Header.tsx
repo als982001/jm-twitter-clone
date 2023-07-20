@@ -2,6 +2,8 @@
 
 import useShowType from "@/Hooks/useShowType";
 import styles from "./header.module.css";
+import TempLogoutButton from "../TempLogoutButton";
+import { signIn } from "next-auth/react";
 
 export default function Header() {
   const [isRecommend, handleModeChange] = useShowType();

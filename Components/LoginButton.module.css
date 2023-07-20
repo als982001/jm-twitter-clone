@@ -1,0 +1,18 @@
+#sidebar__user__login__button {
+  width: 200px;
+  height: 60px;
+  background-color: var(--twitter-color);
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 0px 10px 15px gray;
+  transition: var(--hover-delay);
+  margin-bottom: 5px;
+}
+
+#sidebar__user__login__button:hover {
+  background-color: var(--twitter-color-dark);
+}

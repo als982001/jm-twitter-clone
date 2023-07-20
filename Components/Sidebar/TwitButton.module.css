@@ -1,0 +1,19 @@
+#sidebar__twit__button {
+  width: 80%;
+  height: 50px;
+  border-radius: 50px;
+  margin: 0 auto;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  background-color: var(--twitter-color);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  box-shadow: 0px 10px 15px gray;
+  transition: var(--hover-delay);
+}
+
+#sidebar__twit__button:hover {
+  background-color: var(--twitter-color-dark);
+}

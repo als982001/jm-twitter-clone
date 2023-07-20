@@ -60,6 +60,7 @@
   color: white;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 #write__user__icon {

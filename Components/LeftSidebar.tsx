@@ -9,11 +9,23 @@ import {
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { CiViewList, CiCircleMore } from "react-icons/ci";
 import { BsBell, BsBookmark, BsThreeDots } from "react-icons/bs";
-import { BiSolidUserCircle } from "react-icons/bi";
 import Menu from "./Sidebar/Menu";
 import Link from "next/link";
+import SlidebarUser from "./Sidebar/SlidebarUser";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import TwitButton from "./Sidebar/TwitButton";
 
-export default function LeftSidebar() {
+interface IServerSession {
+  user: {
+    name?: string;
+    email: string;
+  };
+}
+
+export default async function LeftSidebar() {
+  let session: IServerSession | null = await getServerSession(authOptions);
+
   return (
     <nav id={styles.sidebar}>
       <ul className={styles.sidebar__menus}>
@@ -60,26 +72,9 @@ export default function LeftSidebar() {
           <CiCircleMore className={styles.sidebar__menu__logo} />
           <h5>더 보기</h5>
         </Menu>
-        <button className={styles.sidebar__twit__button}>트윗하기</button>
+        {session && <TwitButton />}
       </ul>
-      <section className={styles.sidebar__user}>
-        <BiSolidUserCircle className={styles.sidebar__user__icon} />
-        <section className={styles.sidebar__user__texts}>
-          <h6
-            className={styles.sidebar__user__text}
-            id={styles.sidebar__user__nickname}
-          >
-            유저닉네임
-          </h6>
-          <h6
-            className={styles.sidebar__user__text}
-            id={styles.sidebar__user__id}
-          >
-            유저아이디
-          </h6>
-        </section>
-        <BsThreeDots className={styles.sidebar__user__etc} />
-      </section>
+      <SlidebarUser session={session} />
     </nav>
   );
 }
