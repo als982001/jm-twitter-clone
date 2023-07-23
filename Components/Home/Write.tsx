@@ -7,13 +7,29 @@ import {
 } from "react-icons/ai";
 import { SlCalender } from "react-icons/sl";
 import { FiMapPin } from "react-icons/fi";
-import useTwit from "@/Hooks/useTwit";
+import useMake from "@/Hooks/useMakeTwit";
+import React, { useRef } from "react";
 
 export default function Write() {
-  const { content, writeTwit, postTwit } = useTwit();
+  const { content, writeTwit, postTwit, imageUrl, postImage, removeImage } =
+    useMake();
+  const fileInputRef = useRef(null);
+
+  const handleIconClick = () => {
+    fileInputRef.current?.click();
+  };
 
   return (
     <form onSubmit={postTwit} id={styles.write}>
+      <input
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        ref={fileInputRef}
+        onChange={async (event) => {
+          postImage(event);
+        }}
+      />
       <section id={styles.write__input__space}>
         <section id={styles.write__user__icon} />
         <input
@@ -22,9 +38,27 @@ export default function Write() {
           onChange={(event) => writeTwit(event)}
         />
       </section>
+      {imageUrl.length > 0 && (
+        <section id={styles.write__image__space}>
+          <img id={styles.write__image} src={imageUrl} />
+          <section
+            id={styles.write__image__remove}
+            onClick={() => {
+              removeImage();
+            }}
+          >
+            X
+          </section>
+        </section>
+      )}
       <section id={styles.write__options}>
         <section id={styles.write__options__row}>
-          <section className={styles.write__option}>
+          <section
+            className={styles.write__option}
+            onClick={() => {
+              handleIconClick();
+            }}
+          >
             <BsImage />
           </section>
           <section className={styles.write__option}>
@@ -43,7 +77,9 @@ export default function Write() {
             <FiMapPin />
           </section>
         </section>
-        <button id={styles.write__button}>트윗하기</button>
+        <button disabled={content.length === 0} id={styles.write__button}>
+          트윗하기
+        </button>
       </section>
     </form>
   );

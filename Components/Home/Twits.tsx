@@ -1,35 +1,19 @@
-"use client";
-
 import styles from "./Twits.module.css";
 import { useEffect, useRef, useState } from "react";
 import Twit from "./Twit";
+import useGetTwits from "@/Hooks/useGetTwits";
 
 const options = {
   threshold: 0.5,
 };
 
 export default function Twits() {
-  const [idxes, setIdxes] = useState<number[]>([0, 1, 2, 3, 4, 5]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { twits, isLoading, moreLoading, getAdditionalTwits } = useGetTwits();
 
   const bottomRef = useRef(null);
 
-  const addDatas = (entries: IntersectionObserverEntry[]) => {
-    if (isLoading === false) {
-      setIsLoading((prev) => true);
-
-      console.log("ㅋㅋㅋ");
-
-      setIsLoading((prev) => false);
-    }
-  };
-
   useEffect(() => {
-    console.log(idxes);
-  }, [idxes]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(addDatas, options);
+    const observer = new IntersectionObserver(getAdditionalTwits, options);
     observer.observe(bottomRef.current as any);
 
     return () => {
@@ -39,11 +23,25 @@ export default function Twits() {
 
   return (
     <>
-      {idxes.map((idx) => (
-        <Twit key={idx + ""} />
-      ))}
-      <section id={styles.bottom} ref={bottomRef}>
-        마지막
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        twits.map((twit, index) => (
+          <Twit key={twit.id + String(index)} twit={twit} />
+        ))
+      )}
+      <section
+        ref={bottomRef}
+        style={{
+          width: "100%",
+          height: "100px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "pink",
+        }}
+      >
+        더 보기
       </section>
     </>
   );

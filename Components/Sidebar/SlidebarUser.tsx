@@ -19,6 +19,8 @@ interface IProps {
 }
 
 export default async function SlidebarUser({ session }: IProps) {
+  console.log(session);
+
   return session ? (
     <section id={styles.sidebar__user}>
       <BiSolidUserCircle className={styles.sidebar__user__icon} />
@@ -27,7 +29,7 @@ export default async function SlidebarUser({ session }: IProps) {
           className={styles.sidebar__user__text}
           id={styles.sidebar__user__nickname}
         >
-          {session.user.name && getNameFromEmail(session.user.email)}
+          {session.user.name || getNameFromEmail(session.user.email)}
         </h6>
         <h6
           className={styles.sidebar__user__text}
