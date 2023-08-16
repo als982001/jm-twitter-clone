@@ -8,8 +8,8 @@ import bcrypt from "bcrypt";
 export const authOptions = {
   providers: [
     GithubProvider({
-      clientId: "eb804dd67b5bba16c7d3",
-      clientSecret: "0b8bb523508b1d427871d21a5705d5508139bd2e",
+      clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
+      clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
     }),
 
     CredentialsProvider({
