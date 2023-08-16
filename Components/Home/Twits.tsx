@@ -2,18 +2,19 @@ import styles from "./Twits.module.css";
 import { useEffect, useRef, useState } from "react";
 import Twit from "./Twit";
 import useGetTwits from "@/Hooks/useGetTwits";
+import { ITwit } from "@/utils/types";
 
 const options = {
   threshold: 0.5,
 };
 
 export default function Twits() {
-  const { twits, isLoading, moreLoading, getAdditionalTwits } = useGetTwits();
+  const { twits, isLoading, addIndex } = useGetTwits();
 
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(getAdditionalTwits, options);
+    const observer = new IntersectionObserver(addIndex, options);
     observer.observe(bottomRef.current as any);
 
     return () => {
@@ -27,7 +28,7 @@ export default function Twits() {
         <h1>Loading...</h1>
       ) : (
         twits.map((twit, index) => (
-          <Twit key={twit.id + String(index)} twit={twit} />
+          <Twit key={twit._id.toString()} twit={twit} />
         ))
       )}
       <section

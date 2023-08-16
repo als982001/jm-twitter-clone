@@ -1,10 +1,19 @@
 import { getCurrentTime } from "@/app/Functions/Functions";
+import { getImageUrl } from "@/utils/functions";
+import { postTwit } from "@/utils/twitFunctions";
+import { ITwit } from "@/utils/types";
 import { useEffect, useState } from "react";
+
+interface IResult {
+  status: number;
+  data: ITwit | null;
+}
 
 export default function useMake() {
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState("");
+  const [newTwits, setNewTwits] = useState<ITwit[]>([]);
 
   const writeTwit = (event: React.ChangeEvent<HTMLInputElement>) => {
     setContent((prev) => event.target.value);
@@ -12,8 +21,6 @@ export default function useMake() {
 
   const postImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      console.log(event.target.files[0]);
-
       let file = event.target.files[0];
       let filename = encodeURIComponent(file.name);
 
@@ -29,7 +36,7 @@ export default function useMake() {
     setImageUrl((prev) => "");
   };
 
-  const postTwit = async (event: any) => {
+  const handlePostTwit = async (event: any) => {
     event.preventDefault();
 
     const newTwit = {
@@ -40,53 +47,31 @@ export default function useMake() {
     if (image) {
       let imageName = encodeURIComponent(image.name);
 
-      console.log(imageName);
+      const imageUrl = await getImageUrl(imageName, image);
 
-      let uploadResponse = await fetch(
-        "http://localhost:3000/api/post/image?file=" + imageName
-      );
-      uploadResponse = await uploadResponse.json();
-
-      console.log(uploadResponse);
-
-      //S3 업로드
-      const formData = new FormData();
-      Object.entries({ ...uploadResponse.fields, file: image }).forEach(
-        ([key, value]) => {
-          formData.append(key, value);
-        }
-      );
-
-      let uploadResult = await fetch(uploadResponse.url, {
-        method: "POST",
-        body: formData,
-      });
-
-      console.log(uploadResult);
-
-      if (uploadResult.ok) {
-        newTwit.imageUrl = `${uploadResult.url}/${imageName}`;
-      } else {
+      if (imageUrl === null) {
         alert("이미지 업로드에 실패했습니다.");
         return;
       }
+
+      newTwit.imageUrl = imageUrl;
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/post/twit", {
-        method: "POST",
-        body: JSON.stringify(newTwit),
-      });
+      const result: IResult = await postTwit(newTwit);
 
-      if (response.status === 400 || response.status === 401) {
-        const errorMsg = await response.json();
-        alert(errorMsg);
-      } else {
-        alert("성공!");
+      console.log(result);
+
+      if (result.status === 201) {
+        alert("성공");
 
         setContent("");
         setImage(null);
         setImageUrl("");
+
+        setNewTwits((prev) => [...prev, result.data as ITwit]);
+      } else {
+        alert("실패!");
       }
     } catch (error) {
       console.log(error);
@@ -94,5 +79,13 @@ export default function useMake() {
     }
   };
 
-  return { content, writeTwit, postTwit, imageUrl, postImage, removeImage };
+  return {
+    content,
+    writeTwit,
+    handlePostTwit,
+    imageUrl,
+    postImage,
+    removeImage,
+    newTwits,
+  };
 }

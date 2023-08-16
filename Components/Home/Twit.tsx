@@ -1,15 +1,9 @@
+import { ITwit } from "@/utils/types";
 import styles from "./Twit.module.css";
 import TwitImages from "./TwitImages";
 
 interface IProps {
-  twit: {
-    author: string;
-    createdDate: string;
-    email: string;
-    imageUrl: string;
-    twit: string;
-    id: string;
-  };
+  twit: ITwit;
 }
 
 export default function Twit({ twit }: IProps) {

@@ -1,12 +1,10 @@
+import { getTwitsFromIndex } from "@/utils/twitFunctions";
+import { ITwit } from "@/utils/types";
 import { useEffect, useRef, useState } from "react";
 
-interface ITwit {
-  createdDate: string;
-  email: string;
-  imageUrl: string;
-  twit: string;
-  id: string;
-  author: string;
+interface IResult {
+  data: ITwit[];
+  status: number;
 }
 
 export default function useGetTwits() {
@@ -14,52 +12,47 @@ export default function useGetTwits() {
   const [twits, setTwits] = useState<ITwit[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [idx, setIdx] = useState(0);
-  const moreLoading = useRef(true);
+
+  const finishInitSetting = useRef(false);
+  const isAdding = useRef(true);
 
   useEffect(() => {
     (async () => {
       setIsLoading((prev) => true);
 
-      const response = await fetch(
-        `http://localhost:3000/api/twits?idx=${idx}`,
-        {
-          method: "GET",
-        }
-      );
-      const result = await response.json();
+      const result: IResult = await getTwitsFromIndex(0);
 
-      const _twits = result.map((_twit) => {
+      const _twits = result.data.map((_twit) => {
         return { ..._twit, id: _twit._id.toString() };
       });
       setTwits((prev) => _twits);
 
       setIsLoading((prev) => false);
-      moreLoading.current = false;
+
+      finishInitSetting.current = true;
+      isAdding.current = false;
     })();
   }, []);
 
-  const getAdditionalTwits = async () => {
-    if (moreLoading.current === false) {
-      moreLoading.current = true;
+  const addIndex = () => {
+    if (isAdding.current === false && finishInitSetting.current === true) {
+      isAdding.current = true;
 
-      const additionalTwits = await (
-        await fetch("http://localhost:3000/api/twits", {
-          method: "GET",
-        })
-      ).json();
+      setIdx((prev) => prev + offset);
 
-      setTwits((prev) => {
-        const allTwits = [...prev, ...additionalTwits];
-        return allTwits;
-      });
-
-      moreLoading.current = false;
+      isAdding.current = false;
     }
   };
 
   useEffect(() => {
-    console.log(twits);
-  }, [twits]);
+    (async () => {
+      if (isAdding.current === false) {
+        const result: IResult = await getTwitsFromIndex(idx);
 
-  return { twits, isLoading, moreLoading, getAdditionalTwits };
+        setTwits((prev) => [...prev, ...result.data]);
+      }
+    })();
+  }, [idx]);
+
+  return { twits, isLoading, addIndex };
 }

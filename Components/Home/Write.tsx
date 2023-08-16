@@ -9,10 +9,19 @@ import { SlCalender } from "react-icons/sl";
 import { FiMapPin } from "react-icons/fi";
 import useMake from "@/Hooks/useMakeTwit";
 import React, { useRef } from "react";
+import Twit from "./Twit";
 
 export default function Write() {
-  const { content, writeTwit, postTwit, imageUrl, postImage, removeImage } =
-    useMake();
+  const {
+    content,
+    writeTwit,
+    handlePostTwit,
+    imageUrl,
+    postImage,
+    removeImage,
+    newTwits,
+  } = useMake();
+
   const fileInputRef = useRef(null);
 
   const handleIconClick = () => {
@@ -20,67 +29,72 @@ export default function Write() {
   };
 
   return (
-    <form onSubmit={postTwit} id={styles.write}>
-      <input
-        type="file"
-        accept="image/*"
-        style={{ display: "none" }}
-        ref={fileInputRef}
-        onChange={async (event) => {
-          postImage(event);
-        }}
-      />
-      <section id={styles.write__input__space}>
-        <section id={styles.write__user__icon} />
+    <>
+      <form onSubmit={handlePostTwit} id={styles.write}>
         <input
-          id={styles.write__input}
-          value={content}
-          onChange={(event) => writeTwit(event)}
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          ref={fileInputRef}
+          onChange={async (event) => {
+            postImage(event);
+          }}
         />
-      </section>
-      {imageUrl.length > 0 && (
-        <section id={styles.write__image__space}>
-          <img id={styles.write__image} src={imageUrl} />
-          <section
-            id={styles.write__image__remove}
-            onClick={() => {
-              removeImage();
-            }}
-          >
-            X
-          </section>
+        <section id={styles.write__input__space}>
+          <section id={styles.write__user__icon} />
+          <input
+            id={styles.write__input}
+            value={content}
+            onChange={(event) => writeTwit(event)}
+          />
         </section>
-      )}
-      <section id={styles.write__options}>
-        <section id={styles.write__options__row}>
-          <section
-            className={styles.write__option}
-            onClick={() => {
-              handleIconClick();
-            }}
-          >
-            <BsImage />
+        {imageUrl.length > 0 && (
+          <section id={styles.write__image__space}>
+            <img id={styles.write__image} src={imageUrl} />
+            <section
+              id={styles.write__image__remove}
+              onClick={() => {
+                removeImage();
+              }}
+            >
+              X
+            </section>
           </section>
-          <section className={styles.write__option}>
-            <AiOutlineFileGif />
+        )}
+        <section id={styles.write__options}>
+          <section id={styles.write__options__row}>
+            <section
+              className={styles.write__option}
+              onClick={() => {
+                handleIconClick();
+              }}
+            >
+              <BsImage />
+            </section>
+            <section className={styles.write__option}>
+              <AiOutlineFileGif />
+            </section>
+            <section className={styles.write__option}>
+              <AiOutlineBars />
+            </section>
+            <section className={styles.write__option}>
+              <AiOutlineSmile />
+            </section>
+            <section className={styles.write__option}>
+              <SlCalender />
+            </section>
+            <section className={styles.write__option}>
+              <FiMapPin />
+            </section>
           </section>
-          <section className={styles.write__option}>
-            <AiOutlineBars />
-          </section>
-          <section className={styles.write__option}>
-            <AiOutlineSmile />
-          </section>
-          <section className={styles.write__option}>
-            <SlCalender />
-          </section>
-          <section className={styles.write__option}>
-            <FiMapPin />
-          </section>
+          <button disabled={content.length === 0} id={styles.write__button}>
+            트윗하기
+          </button>
         </section>
-        <button disabled={content.length === 0} id={styles.write__button}>
-          트윗하기
-        </button>
-      </section>
-    </form>
+      </form>
+      {newTwits.map((newTwit) => (
+        <Twit twit={newTwit} key={newTwit._id.toString()} />
+      ))}
+    </>
   );
 }

@@ -7,10 +7,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const db = (await connectDB).db("portfolio");
-
+  console.log(req.query);
   const idx = Number(req.query.idx);
+  console.log(`idx: ${idx}`);
 
-  if (idx) {
+  if (idx !== undefined) {
     if (req.method === "GET") {
       const allTwits = await db
         .collection("twits")
@@ -19,7 +20,11 @@ export default async function handler(
         .limit(3)
         .toArray();
 
+      console.log(allTwits);
+
       return res.status(200).json(allTwits);
     }
+  } else {
+    return res.status(400).json([]);
   }
 }

@@ -5,7 +5,6 @@ import styles from "./page.module.css";
 
 export default async function Test() {
   const session = await getServerSession(authOptions);
-  console.log(session);
 
   return (
     <div id={styles.wrapper}>

@@ -19,8 +19,6 @@ interface IProps {
 }
 
 export default async function SlidebarUser({ session }: IProps) {
-  console.log(session);
-
   return session ? (
     <section id={styles.sidebar__user}>
       <BiSolidUserCircle className={styles.sidebar__user__icon} />
