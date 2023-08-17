@@ -1,33 +1,32 @@
 "use client";
 
 import { BiSolidUserCircle } from "react-icons/bi";
-import styles from "./SlidebarUser.module.css";
+import styles from "./SidebarUser.module.css";
 import { BsThreeDots } from "react-icons/bs";
 import LoginButton from "../LoginButton";
 import { getNameFromEmail } from "@/app/Functions/Functions";
 import { signOut } from "next-auth/react";
+import mongoose from "mongoose";
+import { ITwit, IUser } from "@/utils/types";
 
 interface IServerSession {
-  user: {
-    name?: string;
-    email: string;
-  };
+  user: IUser;
 }
 
 interface IProps {
   session: IServerSession | null;
 }
 
-export default async function SlidebarUser({ session }: IProps) {
+export default function SidebarUser({ session }: IProps) {
   return session ? (
     <section id={styles.sidebar__user}>
-      <BiSolidUserCircle className={styles.sidebar__user__icon} />
+      <img className={styles.sidebar__user__icon} src={session.user.imageUrl} />
       <section id={styles.sidebar__user__texts}>
         <h6
           className={styles.sidebar__user__text}
           id={styles.sidebar__user__nickname}
         >
-          {session.user.name || getNameFromEmail(session.user.email)}
+          {session.user.nickname}
         </h6>
         <h6
           className={styles.sidebar__user__text}

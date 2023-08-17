@@ -7,20 +7,18 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const db = (await connectDB).db("portfolio");
-  console.log(req.query);
+
   const idx = Number(req.query.idx);
-  console.log(`idx: ${idx}`);
 
   if (idx !== undefined) {
     if (req.method === "GET") {
       const allTwits = await db
         .collection("twits")
         .find()
+        .sort({ $natural: -1 })
         .skip(idx)
         .limit(3)
         .toArray();
-
-      console.log(allTwits);
 
       return res.status(200).json(allTwits);
     }

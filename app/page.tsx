@@ -8,7 +8,7 @@ import useGetTwits from "@/Hooks/useGetTwits";
 
 export const dynamic = "force-dynamic"; // <= 추가한 코드
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className={styles.main}>
       <Header />

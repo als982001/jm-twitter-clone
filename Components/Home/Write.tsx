@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 import { SlCalender } from "react-icons/sl";
 import { FiMapPin } from "react-icons/fi";
-import useMake from "@/Hooks/useMakeTwit";
+import usePostTwit from "@/Hooks/usePostTwit";
 import React, { useRef } from "react";
 import Twit from "./Twit";
 
@@ -20,7 +20,7 @@ export default function Write() {
     postImage,
     removeImage,
     newTwits,
-  } = useMake();
+  } = usePostTwit();
 
   const fileInputRef = useRef(null);
 
@@ -41,7 +41,6 @@ export default function Write() {
           }}
         />
         <section id={styles.write__input__space}>
-          <section id={styles.write__user__icon} />
           <input
             id={styles.write__input}
             value={content}

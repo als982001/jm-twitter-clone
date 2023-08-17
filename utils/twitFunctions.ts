@@ -17,7 +17,7 @@ export const postTwit = async (newTwit: {
   content: string;
 }) => {
   try {
-    const response = await fetch("http://localhost:3000/api/post/twit", {
+    const response = await fetch("http://localhost:3000/api/twit", {
       method: "POST",
       body: JSON.stringify(newTwit),
     });

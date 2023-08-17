@@ -11,20 +11,21 @@ import { CiViewList, CiCircleMore } from "react-icons/ci";
 import { BsBell, BsBookmark, BsThreeDots } from "react-icons/bs";
 import Menu from "./Sidebar/Menu";
 import Link from "next/link";
-import SlidebarUser from "./Sidebar/SlidebarUser";
+import SidebarUser from "./Sidebar/SidebarUser";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import TwitButton from "./Sidebar/TwitButton";
+import mongoose from "mongoose";
+import { ITwit, IUser } from "@/utils/types";
 
 interface IServerSession {
-  user: {
-    name?: string;
-    email: string;
-  };
+  user: IUser;
 }
 
 export default async function LeftSidebar() {
   let session: IServerSession | null = await getServerSession(authOptions);
+
+  console.log(session);
 
   return (
     <nav id={styles.sidebar}>
@@ -74,7 +75,7 @@ export default async function LeftSidebar() {
         </Menu>
         {session && <TwitButton />}
       </ul>
-      <SlidebarUser session={session} />
+      <SidebarUser session={session} />
     </nav>
   );
 }

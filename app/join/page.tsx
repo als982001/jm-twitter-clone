@@ -11,9 +11,20 @@ const LOADING = "loading";
 const AUTH = "authenticated";
 const UNAUTH = "unauthenticated";
 
+export const dynamic = "force-dynamic"; // <= 추가한 코드
+
 export default function Join() {
-  const { joinInfo, setJoinInfo, isLoading, setIsLoading, handleJoin } =
-    useJoin();
+  const {
+    joinInfo,
+    setJoinInfo,
+    isLoading,
+    setIsLoading,
+    handleJoin,
+    imageUrl,
+    handleInputImage,
+    clickImageInput,
+    imageInputRef,
+  } = useJoin();
 
   const router = useRouter();
 
@@ -36,6 +47,18 @@ export default function Join() {
       ) : (
         <form onSubmit={handleJoin} id={styles.join__form}>
           <h1 id={styles.join__title}>회원가입</h1>
+          <img
+            id={styles.join__icon}
+            src={imageUrl}
+            onClick={clickImageInput}
+          />
+          <input
+            type="file"
+            accept="*/image"
+            style={{ display: "none" }}
+            onChange={handleInputImage}
+            ref={imageInputRef}
+          />
           <input
             className={styles.join__input}
             placeholder="Email"

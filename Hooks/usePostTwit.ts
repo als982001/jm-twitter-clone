@@ -1,4 +1,5 @@
 import { getCurrentTime } from "@/app/Functions/Functions";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getImageUrl } from "@/utils/functions";
 import { postTwit } from "@/utils/twitFunctions";
 import { ITwit } from "@/utils/types";
@@ -9,7 +10,7 @@ interface IResult {
   data: ITwit | null;
 }
 
-export default function useMake() {
+export default function usePostTwit() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState("");
@@ -22,7 +23,7 @@ export default function useMake() {
   const postImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       let file = event.target.files[0];
-      let filename = encodeURIComponent(file.name);
+      // let filename = encodeURIComponent(file.name);
 
       setImage(file);
       setImageUrl(URL.createObjectURL(file));
@@ -69,7 +70,7 @@ export default function useMake() {
         setImage(null);
         setImageUrl("");
 
-        setNewTwits((prev) => [...prev, result.data as ITwit]);
+        setNewTwits((prev) => [result.data as ITwit, ...prev]);
       } else {
         alert("실패!");
       }

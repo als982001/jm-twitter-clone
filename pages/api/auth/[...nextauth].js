@@ -59,6 +59,10 @@ export const authOptions = {
         token.user = {};
         token.user.name = user.name;
         token.user.email = user.email;
+        token.user._id = user._id;
+        token.user.nickname = user.nickname;
+        token.user.twits = user.twits;
+        token.user.imageUrl = user.imageUrl;
       }
       return token;
     },
