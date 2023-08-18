@@ -17,3 +17,16 @@
 #sidebar__twit__button:hover {
   background-color: var(--twitter-color-dark);
 }
+
+#sidebar__twit__overlay {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  z-index: 10;
+}

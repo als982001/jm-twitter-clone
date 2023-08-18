@@ -69,10 +69,6 @@ export default function useJoin() {
     }
   };
 
-  useEffect(() => {
-    console.log(imageUrl);
-  }, [imageUrl]);
-
   return {
     joinInfo,
     setJoinInfo,

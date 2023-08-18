@@ -1,4 +1,4 @@
-import styles from "./Styles/Recommend.module.css";
+import styles from "./Recommend.module.css";
 
 interface IProps {
   recommend: {

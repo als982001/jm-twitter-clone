@@ -1,4 +1,4 @@
-import styles from "./Styles/OtherInfos.module.css";
+import styles from "./OtherInfos.module.css";
 
 export default function OtherInfos() {
   return (

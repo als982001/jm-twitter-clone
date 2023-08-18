@@ -2,7 +2,6 @@ import styles from "./Twits.module.css";
 import { useEffect, useRef, useState } from "react";
 import Twit from "./Twit";
 import useGetTwits from "@/Hooks/useGetTwits";
-import { ITwit } from "@/utils/types";
 
 const options = {
   threshold: 0.5,

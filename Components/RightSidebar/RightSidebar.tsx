@@ -1,9 +1,9 @@
-import RightSideInput from "./Input/RightSideInput";
+import OtherInfos from "./OtherInfos";
+import RecommendFollows from "./RecommendFollows";
+import RightSideInput from "./RightSideInput";
+import Trends from "./Trends";
+import UserAuth from "./UserAuth";
 import styles from "./RightSidebar.module.css";
-import OtherInfos from "./Sidebar/OtherInfos";
-import RecommendFollows from "./Sidebar/RecommendFollows";
-import Trends from "./Sidebar/Trends";
-import UserAuth from "./Sidebar/UserAuth";
 
 export default function RightSidebar() {
   return (

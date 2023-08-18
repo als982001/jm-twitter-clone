@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./Input.module.css";
+import styles from "./RightSideInput.module.css";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function RightSideInput() {

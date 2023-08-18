@@ -1,0 +1,16 @@
+#twitmodal__container {
+  width: 600px;
+  min-height: 250px;
+  height: auto;
+  background-color: white;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+  border-radius: 20px;
+}

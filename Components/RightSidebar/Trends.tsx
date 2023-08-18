@@ -1,4 +1,4 @@
-import styles from "./Styles/Trends.module.css";
+import styles from "./Trends.module.css";
 import Trend from "./Trend";
 
 interface ITrends {

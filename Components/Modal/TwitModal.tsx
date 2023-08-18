@@ -1,18 +1,14 @@
-import styles from "./write.module.css";
-import { BsImage } from "react-icons/bs";
-import {
-  AiOutlineFileGif,
-  AiOutlineBars,
-  AiOutlineSmile,
-} from "react-icons/ai";
-import { SlCalender } from "react-icons/sl";
-import { FiMapPin } from "react-icons/fi";
 import usePostTwit from "@/Hooks/usePostTwit";
-import React from "react";
-import Twit from "./Twit";
-import WriteForm from "./WriteForm";
+import Write from "../Home/Write";
+import WriteForm from "../Home/WriteForm";
+import styles from "./TwitModal.module.css";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
-export default function Write() {
+interface IProps {
+  setOpenModal: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function TwitModal({ setOpenModal }: IProps) {
   const {
     content,
     writeTwit,
@@ -26,8 +22,15 @@ export default function Write() {
     clickImageInput,
   } = usePostTwit();
 
+  useEffect(() => {
+    if (newTwits.length > 0) {
+      window.location.reload();
+      setOpenModal(false);
+    }
+  }, [newTwits]);
+
   return (
-    <>
+    <section id={styles.twitmodal__container}>
       <WriteForm
         handlePostTwit={handlePostTwit}
         imageInputRef={imageInputRef}
@@ -39,9 +42,6 @@ export default function Write() {
         removeImage={removeImage}
         clickImageInput={clickImageInput}
       />
-      {newTwits.map((newTwit) => (
-        <Twit twit={newTwit} key={newTwit._id.toString()} />
-      ))}
-    </>
+    </section>
   );
 }

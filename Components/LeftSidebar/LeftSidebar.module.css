@@ -74,3 +74,13 @@
 .sidebar__twit__button:hover {
   background-color: var(--twitter-color-dark);
 }
+
+#overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../LeftSidebar.module.css";
+import styles from "./LeftSidebar.module.css";
 import { ReactNode } from "react";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";

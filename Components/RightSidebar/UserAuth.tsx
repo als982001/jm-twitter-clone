@@ -1,7 +1,7 @@
 "use client";
 
 import { PleaseWait } from "@/app/Functions/Functions";
-import styles from "./Styles/UserAuth.module.css";
+import styles from "./UserAuth.module.css";
 
 export default function UserAuth() {
   return (

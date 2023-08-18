@@ -2,7 +2,7 @@
   width: 380px;
   position: fixed;
   top: 10px;
-  z-index: 10;
+  z-index: 3;
 }
 
 #sidebar__input__icons {
@@ -18,7 +18,7 @@
   bottom: 0;
   margin: auto 0;
   color: var(--font-dark);
-  z-index: 5;
+  z-index: 2;
 }
 
 #sidebar__input {
@@ -50,7 +50,7 @@
   color: white;
   background-color: var(--twitter-color);
   cursor: pointer;
-  z-index: 10;
+  z-index: 3;
   position: absolute;
   right: 40px;
   top: 0;

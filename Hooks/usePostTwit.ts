@@ -1,9 +1,7 @@
-import { getCurrentTime } from "@/app/Functions/Functions";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getImageUrl } from "@/utils/functions";
+import { checkLogin, getImageUrl } from "@/utils/functions";
 import { postTwit } from "@/utils/twitFunctions";
-import { ITwit } from "@/utils/types";
-import { useEffect, useState } from "react";
+import { ITwit, IUser } from "@/utils/types";
+import { useEffect, useRef, useState } from "react";
 
 interface IResult {
   status: number;
@@ -15,6 +13,9 @@ export default function usePostTwit() {
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState("");
   const [newTwits, setNewTwits] = useState<ITwit[]>([]);
+  const [userInfo, setUserInfo] = useState<IUser | null>(null);
+
+  const imageInputRef = useRef<HTMLInputElement>(null);
 
   const writeTwit = (event: React.ChangeEvent<HTMLInputElement>) => {
     setContent((prev) => event.target.value);
@@ -61,8 +62,6 @@ export default function usePostTwit() {
     try {
       const result: IResult = await postTwit(newTwit);
 
-      console.log(result);
-
       if (result.status === 201) {
         alert("성공");
 
@@ -80,6 +79,24 @@ export default function usePostTwit() {
     }
   };
 
+  const clickImageInput = () => {
+    if (imageInputRef.current) {
+      imageInputRef.current.click();
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const result = await checkLogin();
+
+      if (result.data === null) {
+        window.location.href = "/api/auth/signin";
+      }
+
+      setUserInfo(result.data);
+    })();
+  }, []);
+
   return {
     content,
     writeTwit,
@@ -88,5 +105,8 @@ export default function usePostTwit() {
     postImage,
     removeImage,
     newTwits,
+    userInfo,
+    imageInputRef,
+    clickImageInput,
   };
 }

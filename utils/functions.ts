@@ -25,3 +25,15 @@ export const getImageUrl = async (imageName: string, image: File) => {
     return null;
   }
 };
+
+export const checkLogin = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/checkLogin");
+
+    const data = await response.json();
+
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 400, data: null };
+  }
+};

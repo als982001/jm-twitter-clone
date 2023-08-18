@@ -13,7 +13,6 @@
   margin-top: 70px;
   display: flex;
   flex-direction: column;
-  z-index: 1;
   position: sticky;
   top: -560px;
 }
