@@ -1,14 +1,10 @@
-import TempLogoutButton from "@/Components/TempLogoutButton";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getServerSession } from "next-auth";
 import styles from "./page.module.css";
+import Maintenance from "@/Components/Global/Maintenance";
 
 export default async function Test() {
-  const session = await getServerSession(authOptions);
-
   return (
     <div id={styles.wrapper}>
-      <TempLogoutButton />
+      <Maintenance />
     </div>
   );
 }
