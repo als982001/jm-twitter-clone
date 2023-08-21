@@ -1,0 +1,124 @@
+#main {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  border-left: var(--main-border);
+  border-right: var(--main-border);
+  position: absolute;
+  left: 280px;
+}
+
+#profile__header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+#profile__header__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#profile__header__email {
+  font-size: 12px;
+}
+
+#profile__profile {
+  width: 100%;
+  height: 420px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+  border-bottom: 1px solid gray;
+}
+
+#profile__profile__img {
+  width: 100%;
+  z-index: 1;
+}
+
+#profile__profile__space {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#profile__setting {
+  width: 130px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#profile__user__icon {
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  margin: auto 0;
+  z-index: 2;
+}
+
+#profile__user__infos {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+#profile__user__nickname {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#profile__user__info {
+  font-size: 15px;
+  margin: 3px 0;
+}
+
+#profile__main {
+  width: 100%;
+  height: auto;
+}
+
+#profile__menus {
+  width: 100%;
+  height: 45px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid black;
+}
+
+#profile__menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--hover-delay);
+  font-weight: bold;
+}
+
+#profile__menu:hover {
+  background-color: gainsboro;
+}
+
+#profile__content {
+}

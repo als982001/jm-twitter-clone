@@ -26,7 +26,7 @@ export default function LeftSidebar() {
       <nav id={styles.sidebar}>
         <ul className={styles.sidebar__menus}>
           <Icon />
-          <Menus />
+          <Menus userInfo={userInfo} />
           {userInfo && (
             <TwitButton
               onClick={() => {

@@ -12,7 +12,7 @@ interface ISession {
   user: IUser;
 }
 
-export default async function page() {
+export default async function Bookmakrs() {
   const session: ISession | null = await getServerSession(authOptions);
 
   return (
