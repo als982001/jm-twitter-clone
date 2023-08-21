@@ -17,7 +17,7 @@ export default function Twits() {
     observer.observe(bottomRef.current as any);
 
     return () => {
-      observer.unobserve(bottomRef.current as any);
+      // observer.unobserve(bottomRef.current as any);
     };
   }, []);
 

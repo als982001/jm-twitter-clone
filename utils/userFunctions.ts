@@ -6,7 +6,6 @@ export const join = async (joinInfo: {
   imageUrl: string;
 }) => {
   try {
-    console.log(joinInfo);
     const response = await fetch("http://localhost:3000/api/auth/join", {
       method: "POST",
       body: JSON.stringify(joinInfo),

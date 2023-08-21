@@ -12,7 +12,7 @@ export default function useGetUserInfo() {
 
       const result = await checkLogin();
 
-      if (result.data) {
+      if (result?.data) {
         setUserInfo(result.data);
       }
 

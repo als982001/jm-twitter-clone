@@ -1,0 +1,52 @@
+#main {
+  max-width: 600px;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  border-left: var(--main-border);
+  border-right: var(--main-border);
+  position: absolute;
+  left: 280px;
+}
+
+#bookmarks__header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+#bookmarks__header__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#bookmarks__header__email {
+  font-size: 12px;
+}
+
+#bookmarks__main {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#bookmarks__img {
+  width: 70%;
+}
+
+#bookmarks__string {
+  width: 60%;
+  margin-top: 20px;
+}
+
+#bookmarks__title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
