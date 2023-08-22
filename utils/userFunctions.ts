@@ -18,3 +18,17 @@ export const join = async (joinInfo: {
     return { status: 500, data: null };
   }
 };
+
+export const findUserByNickname = async (nickname: string) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/userinfo?nickname=${nickname}`
+    );
+
+    const data = await response.json();
+
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: null };
+  }
+};

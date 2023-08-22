@@ -1,0 +1,34 @@
+#highlights {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+#highlights__title {
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: start;
+}
+
+#highlights__content {
+  width: 100%;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+#highlights__button {
+  width: 130px;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: black;
+  font-size: 20px;
+  font-weight: bold;
+}

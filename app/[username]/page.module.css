@@ -32,7 +32,6 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   position: relative;
-  border-bottom: 1px solid gray;
 }
 
 #profile__profile__img {
@@ -103,7 +102,7 @@
   height: 45px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
 }
 
 #profile__menu {
@@ -114,11 +113,16 @@
   align-items: center;
   transition: var(--hover-delay);
   font-weight: bold;
+  cursor: pointer;
 }
 
 #profile__menu:hover {
   background-color: gainsboro;
 }
 
-#profile__content {
+.menu__name {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
