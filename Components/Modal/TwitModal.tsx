@@ -5,10 +5,10 @@ import styles from "./TwitModal.module.css";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface IProps {
-  setOpenModal: Dispatch<SetStateAction<boolean>>;
+  setShowTwitModal: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function TwitModal({ setOpenModal }: IProps) {
+export default function TwitModal({ setShowTwitModal }: IProps) {
   const {
     content,
     writeTwit,
@@ -25,7 +25,7 @@ export default function TwitModal({ setOpenModal }: IProps) {
   useEffect(() => {
     if (newTwits.length > 0) {
       window.location.reload();
-      setOpenModal(false);
+      setShowTwitModal(false);
     }
   }, [newTwits]);
 

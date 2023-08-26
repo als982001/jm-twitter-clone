@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./TwitButton.module.css";
-import useTwitModal from "@/Hooks/useTwitModal";
+import useTwitModal from "@/Hooks/useShowModal";
 import TwitModal from "../Modal/TwitModal";
 
 interface IProps {

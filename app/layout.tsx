@@ -3,7 +3,7 @@ import LeftSidebar from "../Components/LeftSidebar/LeftSidebar";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
-import useTwitModal from "@/Hooks/useTwitModal";
+import useTwitModal from "@/Hooks/useShowModal";
 
 const inter = Inter({ subsets: ["latin"] });
 

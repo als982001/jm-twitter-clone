@@ -8,10 +8,12 @@ import { ITwit, IUser } from "@/utils/types";
 import TwitButton from "./TwitButton";
 import Menus from "./Menus";
 import Icon from "./Icon";
-import useTwitModal from "@/Hooks/useTwitModal";
 import useGetUserInfo from "@/Hooks/useGetUserInfo";
 import Overlay from "../Overlay";
 import TwitModal from "../Modal/TwitModal";
+import useShowModal from "@/Hooks/useShowModal";
+import { useState } from "react";
+import UserInfoModal from "../Modal/UserInfoModal";
 
 interface IServerSession {
   user: IUser;
@@ -19,7 +21,8 @@ interface IServerSession {
 
 export default function LeftSidebar() {
   const { userInfo, isLoading } = useGetUserInfo();
-  const { openModal, setOpenModal } = useTwitModal();
+  const [showTwitModal, setShowTwitModal] = useState(false);
+  const [showUserModal, setShowUserModal] = useState(false);
 
   return (
     <>
@@ -30,21 +33,31 @@ export default function LeftSidebar() {
           {userInfo && (
             <TwitButton
               onClick={() => {
-                setOpenModal(true);
+                setShowTwitModal(true);
               }}
             />
           )}
         </ul>
-        <SidebarUser user={userInfo} />
+        <SidebarUser user={userInfo} setShowUserModal={setShowUserModal} />
       </nav>
-      {openModal && (
+      {showTwitModal && (
         <>
           <Overlay
             onClick={() => {
-              setOpenModal(false);
+              setShowTwitModal(false);
             }}
           />
-          <TwitModal setOpenModal={setOpenModal} />
+          <TwitModal setShowTwitModal={setShowTwitModal} />
+        </>
+      )}
+      {showUserModal && userInfo && (
+        <>
+          <Overlay
+            onClick={() => {
+              setShowUserModal(false);
+            }}
+          />
+          <UserInfoModal user={userInfo} />
         </>
       )}
     </>
