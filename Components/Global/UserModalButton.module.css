@@ -1,0 +1,13 @@
+#button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  transition: var(--hover-delay);
+}
+
+#button:hover {
+  background-color: gainsboro;
+}

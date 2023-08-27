@@ -1,12 +1,3 @@
-import styles from "./write.module.css";
-import { BsImage } from "react-icons/bs";
-import {
-  AiOutlineFileGif,
-  AiOutlineBars,
-  AiOutlineSmile,
-} from "react-icons/ai";
-import { SlCalender } from "react-icons/sl";
-import { FiMapPin } from "react-icons/fi";
 import usePostTwit from "@/Hooks/usePostTwit";
 import React from "react";
 import Twit from "./Twit";

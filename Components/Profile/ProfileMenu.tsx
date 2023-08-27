@@ -106,7 +106,7 @@ export default function ProfileMenu({ user }: IProps) {
           </h6>
         </li>
       </ul>
-      {menu === "posts" && <Posts />}
+      {menu === "posts" && <Posts nickname={user.nickname} />}
       {menu === "replies" && <Replies />}
       {menu === "highlights" && <Highlights />}
       {menu === "media" && <Media />}

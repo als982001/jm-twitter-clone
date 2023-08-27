@@ -90,7 +90,7 @@ export default function usePostTwit() {
       const result = await checkLogin();
 
       if (result.data === null) {
-        window.location.href = "/api/auth/signin";
+        // window.location.href = "/api/auth/signin";
       }
 
       setUserInfo(result.data);

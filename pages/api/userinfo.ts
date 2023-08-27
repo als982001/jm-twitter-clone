@@ -9,13 +9,7 @@ export default async function handler(
 
   const { nickname } = req.query;
 
-  console.log(`nickname: ${nickname}`);
-
   const user = await db.collection("user_cred").findOne({ nickname: nickname });
-
-  console.log("User!");
-  console.log(user);
-  console.log("=====");
 
   if (user) {
     return res.status(200).json(user);

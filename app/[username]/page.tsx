@@ -32,7 +32,7 @@ export default async function Profile() {
         <h4 id={styles.profile__header__email}>{result.data.email}</h4>
       </header>
       <ProfileUserInfo user={result.data} />
-      <ProfileMenu />
+      <ProfileMenu user={result.data} />
     </main>
   ) : (
     <main>해당 유저 없음!</main>

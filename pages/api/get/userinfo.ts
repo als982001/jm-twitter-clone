@@ -17,8 +17,6 @@ export default async function handler(
     authOptions
   );
 
-  console.log(session);
-
   if (session) {
     return res.status(200).json(session.user);
   } else {

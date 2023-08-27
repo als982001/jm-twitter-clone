@@ -28,10 +28,16 @@ export const authOptions = {
         let user = await db
           .collection("user_cred")
           .findOne({ email: credentials.email });
+
+        console.log(user);
+
         if (!user) {
           console.log("해당 이메일은 없음");
           return null;
         }
+
+        console.log(credentials);
+
         const pwcheck = await bcrypt.compare(
           credentials.password,
           user.password

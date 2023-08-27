@@ -8,6 +8,9 @@ export interface ITwit {
   email: string;
   twit: string;
   imageUrl: string;
+  likes: mongoose.Types.ObjectId[] | string[];
+  comments: mongoose.Types.ObjectId[] | string[];
+  views: number;
   createdDate: string;
 }
 

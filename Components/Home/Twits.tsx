@@ -1,4 +1,3 @@
-import styles from "./Twits.module.css";
 import { useEffect, useRef, useState } from "react";
 import Twit from "./Twit";
 import useGetTwits from "@/Hooks/useGetTwits";
@@ -16,9 +15,7 @@ export default function Twits() {
     const observer = new IntersectionObserver(addIndex, options);
     observer.observe(bottomRef.current as any);
 
-    return () => {
-      // observer.unobserve(bottomRef.current as any);
-    };
+    return () => {};
   }, []);
 
   return (
@@ -35,14 +32,9 @@ export default function Twits() {
         style={{
           width: "100%",
           height: "100px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "pink",
+          display: "hidden",
         }}
-      >
-        더 보기
-      </section>
+      />
     </>
   );
 }

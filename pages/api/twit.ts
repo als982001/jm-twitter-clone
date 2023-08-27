@@ -10,6 +10,7 @@ interface ISession {
   user: IUser;
 }
 
+// 트윗을 게시하는 함수
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -35,7 +36,7 @@ export default async function handler(
         return res.status(400).json("내용을 입력해주세요.");
       }
 
-      const user: IUser | null = await db
+      const user = await db
         .collection("user_cred")
         .findOne({ _id: new ObjectId(session.user._id) });
 
@@ -50,6 +51,9 @@ export default async function handler(
         email: user.email,
         twit: newTwit.content,
         imageUrl: newTwit.imageUrl,
+        likes: [],
+        comments: [],
+        views: 0,
         createdDate,
       });
 

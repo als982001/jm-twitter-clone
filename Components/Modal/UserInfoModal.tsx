@@ -1,5 +1,6 @@
 import { IUser } from "@/utils/types";
 import styles from "./UserInfoModal.module.css";
+import UserModalLogout from "../Global/UserModalLogout";
 
 interface IProps {
   user: IUser;
@@ -24,7 +25,7 @@ export default function userModal({ user }: IProps) {
           {user.email}
         </h4>
       </section>
-      <section className={styles.button}>로그아웃</section>
+      <UserModalLogout />
       <section className={styles.button}>계정 관리</section>
     </section>
   );
