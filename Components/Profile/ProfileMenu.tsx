@@ -110,7 +110,7 @@ export default function ProfileMenu({ user }: IProps) {
       {menu === "replies" && <Replies />}
       {menu === "highlights" && <Highlights />}
       {menu === "media" && <Media />}
-      {menu === "likes" && <Likes />}
+      {menu === "likes" && <Likes user={user} />}
     </section>
   );
 }

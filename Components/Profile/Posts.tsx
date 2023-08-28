@@ -19,6 +19,7 @@ export default function Posts({ nickname }: IProps) {
     const observer = new IntersectionObserver(addIndex, options);
     observer.observe(bottomRef.current as any);
   }, []);
+
   return (
     <>
       {isLoading ? (

@@ -2,6 +2,7 @@ import mongoose, { mongo } from "mongoose";
 
 export interface ITwit {
   _id: mongoose.Types.ObjectId | string;
+  id?: mongoose.Types.ObjectId | string;
   nickname: string;
   authorId: mongoose.Types.ObjectId | string;
   authorIcon: string;
@@ -20,4 +21,6 @@ export interface IUser {
   email: string;
   imageUrl: string;
   twits: mongoose.Types.ObjectId[] | string[];
+  likes: string[];
+  password?: string;
 }

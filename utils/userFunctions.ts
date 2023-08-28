@@ -1,3 +1,5 @@
+const BACK = "http://localhost:3000/api";
+
 export const join = async (joinInfo: {
   email: string;
   nickname: string;
@@ -30,5 +32,23 @@ export const findUserByNickname = async (nickname: string) => {
     return { status: response.status, data };
   } catch (error) {
     return { status: 500, data: null };
+  }
+};
+
+export const getLikeTwitsByUser = async (likes: string[], idx: number) => {
+  try {
+    const response = await fetch(`${BACK}/likes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ likes, idx }),
+    });
+
+    const data = await response.json();
+
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 400, data: [] };
   }
 };
