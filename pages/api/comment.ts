@@ -37,7 +37,7 @@ export default async function handler(
     email: user.email,
     authorImageUrl: user?.imageUrl,
     twit: new ObjectId(twitId),
-    likes: 0,
+    likes: [],
     views: 0,
   });
 

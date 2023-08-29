@@ -16,5 +16,9 @@ export default async function handler(
     .find({ _id: { $in: commentIds } })
     .toArray();
 
+  await db
+    .collection("comments")
+    .updateMany({ _id: { $in: commentIds } }, { $inc: { views: 1 } });
+
   return res.status(200).json(comments);
 }

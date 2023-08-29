@@ -1,9 +1,7 @@
-import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import styles from "./Comment.module.css";
 import { IComment } from "@/utils/types";
-import { AiOutlineHeart } from "react-icons/ai";
-import { VscGraph } from "react-icons/vsc";
 import { getNameFromEmail } from "@/utils/functions";
+import CommentUtils from "./CommentUtils";
 
 interface IProps {
   comment: IComment;
@@ -21,20 +19,7 @@ export default function Comment({ comment }: IProps) {
           )}`}</h4>
         </section>
         <h3 id={styles.comment}>{comment.comment}</h3>
-        <section id={styles.utils}>
-          <section className={styles.util}>
-            <HiOutlineChatBubbleOvalLeft className={styles.util__icon} />
-            <h6>0</h6>
-          </section>
-          <section className={styles.util}>
-            <AiOutlineHeart className={styles.util__icon} />
-            <h6>{comment.likes}</h6>
-          </section>
-          <section className={styles.util}>
-            <VscGraph className={styles.util__icon} />
-            <h6>{comment.views}</h6>
-          </section>
-        </section>
+        <CommentUtils comment={comment} />
       </section>
     </li>
   );

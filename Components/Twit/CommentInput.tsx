@@ -7,16 +7,12 @@ interface IProps {
 }
 
 export default function CommentInput({ twit }: IProps) {
-  const { comment, changeComment, handlePostComment } = usePostComment(
-    twit._id
-  );
+  const { comment, changeComment, handlePostComment, userInfo } =
+    usePostComment(twit._id);
 
   return (
     <form id={styles.comment} onSubmit={handlePostComment}>
-      <img
-        id={styles.icon}
-        src="https://pbs.twimg.com/media/F4kuNUjbkAAjzlR?format=jpg&name=large"
-      />
+      <img id={styles.icon} src={userInfo?.imageUrl} />
       <input
         id={styles.input}
         placeholder="답글을 게시하세요"

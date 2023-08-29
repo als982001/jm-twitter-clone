@@ -34,6 +34,6 @@ export interface IComment {
   authorImageUrl: string;
   twit: mongoose.Types.ObjectId | string;
   comment: string;
-  likes: number;
+  likes: mongoose.Types.ObjectId[] | string[];
   views: number;
 }

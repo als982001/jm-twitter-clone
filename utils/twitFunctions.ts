@@ -116,3 +116,22 @@ export const getComments = async (commentIds: string[]) => {
     return { status: 400, data: [] };
   }
 };
+
+export const postCommentLike = async (
+  commentId: mongoose.Types.ObjectId | string
+) => {
+  try {
+    const response = await fetch(
+      `${BACK}/comment/like?commentId=${commentId}`,
+      {
+        method: "PATCH",
+      }
+    );
+
+    const data = await response.json();
+
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 400, data: null };
+  }
+};
