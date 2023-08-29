@@ -1,11 +1,18 @@
 import { checkLogin, getUserInfo } from "@/utils/functions";
 import { postComment } from "@/utils/twitFunctions";
-import { IUser } from "@/utils/types";
+import { IComment, IUser } from "@/utils/types";
 import mongoose from "mongoose";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 export default function usePostComment(
-  twitId: mongoose.Types.ObjectId | string
+  twitId: mongoose.Types.ObjectId | string,
+  setNewComments: Dispatch<SetStateAction<IComment[]>>
 ) {
   const [comment, setComment] = useState("");
   const [userInfo, setUserInfo] = useState<IUser | null>(null);
@@ -18,6 +25,10 @@ export default function usePostComment(
     event.preventDefault();
 
     const result = await postComment(twitId, comment);
+
+    if (result.data) {
+      setNewComments((prev) => [...prev, result.data]);
+    }
   };
 
   useEffect(() => {

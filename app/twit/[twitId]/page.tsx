@@ -7,14 +7,23 @@ import Twit from "@/Components/Home/Twit";
 import CommentInput from "@/Components/Twit/CommentInput";
 import { ITwit } from "@/utils/types";
 import Comments from "@/Components/Twit/Comments";
+import { useRouter } from "next/navigation";
+import CommentSpace from "@/Components/Twit/CommentSpace";
 
 export default function Detail() {
   const { twit, isLoading } = useGetTwit();
 
+  const router = useRouter();
+
   return (
     <main id={styles.main}>
       <header id={styles.header}>
-        <AiOutlineArrowLeft id={styles.header__icon} />
+        <AiOutlineArrowLeft
+          id={styles.header__icon}
+          onClick={() => {
+            router.back();
+          }}
+        />
         <h4 id={styles.header__title}>트윗</h4>
       </header>
       <section id={styles.twit}>
@@ -26,8 +35,7 @@ export default function Detail() {
           <h4>없음!</h4>
         )}
       </section>
-      {twit && <CommentInput twit={twit as ITwit} />}
-      {twit && <Comments commentIds={twit.comments as string[]} />}
+      {twit && <CommentSpace twit={twit} />}
     </main>
   );
 }

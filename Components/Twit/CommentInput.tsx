@@ -1,14 +1,16 @@
-import { ITwit } from "@/utils/types";
+import { IComment, ITwit } from "@/utils/types";
 import styles from "./CommentInput.module.css";
 import usePostComment from "@/Hooks/usePostComment";
+import { Dispatch, SetStateAction } from "react";
 
 interface IProps {
   twit: ITwit;
+  setNewComments: Dispatch<SetStateAction<IComment[]>>;
 }
 
-export default function CommentInput({ twit }: IProps) {
+export default function CommentInput({ twit, setNewComments }: IProps) {
   const { comment, changeComment, handlePostComment, userInfo } =
-    usePostComment(twit._id);
+    usePostComment(twit._id, setNewComments);
 
   return (
     <form id={styles.comment} onSubmit={handlePostComment}>

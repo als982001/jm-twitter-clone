@@ -135,3 +135,20 @@ export const postCommentLike = async (
     return { status: 400, data: null };
   }
 };
+
+export const getCommentsByNickname = async (nickname: string, idx: number) => {
+  try {
+    const response = await fetch(
+      `${BACK}/comments?idx=${idx}&nickname=${nickname}`,
+      {
+        method: "GET",
+      }
+    );
+
+    const data = await response.json();
+
+    return { status: response.status, data };
+  } catch (error: any) {
+    return { status: 400, data: [] };
+  }
+};

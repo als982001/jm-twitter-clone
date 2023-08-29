@@ -28,6 +28,7 @@ export default function Twits() {
       ) : (
         twits.map((twit, index) => (
           <section
+            style={{ cursor: "pointer" }}
             onClick={() => {
               router.push(`/twit/${twit._id.toString()}`);
             }}

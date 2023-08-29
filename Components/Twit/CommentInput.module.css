@@ -30,4 +30,11 @@
   outline: none;
   border: none;
   background-color: var(--twitter-color);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#button:hover {
+  background-color: var(--twitter-color-dark);
 }
