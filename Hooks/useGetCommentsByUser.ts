@@ -1,7 +1,8 @@
+import { getCommentsByNickname } from "@/utils/twitFunctions";
 import { IComment } from "@/utils/types";
 import { useEffect, useRef, useState } from "react";
 
-export default function useGetCommentsByUesr() {
+export default function useGetCommentsByUesr(nickname: string) {
   const offset = 3;
   const [comments, setComments] = useState<IComment[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,8 +15,8 @@ export default function useGetCommentsByUesr() {
     (async () => {
       setIsLoading((prev) => true);
 
-      const result = { status: 200, data: [] };
-
+      const result = await getCommentsByNickname(nickname, idx);
+      console.log(result);
       setComments((prev) => result.data);
 
       setIsLoading((prev) => false);
@@ -37,9 +38,11 @@ export default function useGetCommentsByUesr() {
 
   useEffect(() => {
     (async () => {
-      const result = { status: 200, data: [] };
+      if (isAdding.current === false) {
+        const result = await getCommentsByNickname(nickname, idx);
 
-      setComments((prev) => [...prev, ...result.data]);
+        setComments((prev) => [...prev, ...result.data]);
+      }
     })();
   }, [idx]);
 

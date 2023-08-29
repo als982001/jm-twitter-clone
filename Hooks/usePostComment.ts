@@ -24,6 +24,8 @@ export default function usePostComment(
   const handlePostComment = async (event: any) => {
     event.preventDefault();
 
+    console.log(`comment: ${comment}`);
+
     const result = await postComment(twitId, comment);
 
     if (result.data) {

@@ -22,6 +22,8 @@ export default async function handler(
     const twitId: string = req.query.twitId as string;
     const comment = req.body;
 
+    console.log(`comment: ${comment}`);
+
     const twit = await db
       .collection("twits")
       .findOne({ _id: new ObjectId(twitId) });
@@ -66,6 +68,22 @@ export default async function handler(
       return res.status(201).json(newComment);
     } else {
       return res.status(400).json(null);
+    }
+  } else if (req.method === "GET") {
+    const nickname = req.query.nickname;
+    const idx = Number(req.query.idx);
+
+    const comments = await db
+      .collection("comments")
+      .find({ nickname: nickname })
+      .skip(idx)
+      .limit(3)
+      .toArray();
+
+    if (comments) {
+      return res.status(200).json(comments);
+    } else {
+      return res.status(400).json([]);
     }
   }
 }

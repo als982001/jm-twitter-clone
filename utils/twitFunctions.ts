@@ -83,7 +83,7 @@ export const postComment = async (
   comment: string
 ) => {
   try {
-    const response = await fetch(`${BACK}/comment?twitId=${twitId}`, {
+    const response = await fetch(`${BACK}/comments?twitId=${twitId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export const postCommentLike = async (
 ) => {
   try {
     const response = await fetch(
-      `${BACK}/comment/like?commentId=${commentId}`,
+      `${BACK}/comments/like?commentId=${commentId}`,
       {
         method: "PATCH",
       }

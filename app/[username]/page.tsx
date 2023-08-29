@@ -17,12 +17,12 @@ interface IFindUserByNickname {
 }
 
 export default async function Profile() {
-  const params: IParams = useParams();
-  const nickname = decodeURIComponent(params.username);
+  const params = useParams();
+  const nickname = decodeURIComponent(params?.username as string);
 
   const result: IFindUserByNickname = await findUserByNickname(nickname);
 
-  return result.data ? (
+  return params && result.data ? (
     <main id={styles.main}>
       <header id={styles.profile__header}>
         <h2 id={styles.profile__header__title}>{result.data.nickname}</h2>
