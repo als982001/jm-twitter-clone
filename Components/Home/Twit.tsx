@@ -1,9 +1,6 @@
 import { ITwit } from "@/utils/types";
 import styles from "./Twit.module.css";
 import TwitImages from "./TwitImages";
-import { AiOutlineHeart } from "react-icons/ai";
-import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
-import { VscGraph } from "react-icons/vsc";
 import TwitUtils from "./TwitUtils";
 
 interface IProps {

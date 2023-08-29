@@ -11,14 +11,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("Get Likes 시작!!!");
   const db = (await connectDB).db("portfolio");
 
-  console.log(req.body);
-
   const data: IBody = req.body;
-
-  console.log(data);
 
   if (
     data === undefined ||

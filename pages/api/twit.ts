@@ -70,5 +70,26 @@ export default async function handler(
     } catch (error) {
       return res.status(400).json("나중에 다시 시도해주세요.");
     }
+  } else if (req.method === "GET") {
+    const { twitId } = req.query;
+
+    if (twitId === undefined) {
+      return res.status(400).json("다음에 다시 시도해주세요.");
+    }
+
+    const twit = await db
+      .collection("twits")
+      .findOne({ _id: new ObjectId(twitId as string) });
+
+    if (twit === null) {
+      return res.status(400).json(null);
+    }
+
+    // twit의 views를 +1
+    await db
+      .collection("twits")
+      .updateOne({ _id: twit._id }, { $inc: { views: 1 } });
+
+    return res.status(200).json(twit);
   }
 }

@@ -1,0 +1,39 @@
+#main {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  height: 600px;
+  border-left: var(--main-border);
+  border-right: var(--main-border);
+  position: absolute;
+  left: 280px;
+}
+
+#header {
+  width: 100%;
+  height: 60px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+
+  position: fixed;
+  z-index: 1;
+}
+
+#header__icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#header__title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+#twit {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+}

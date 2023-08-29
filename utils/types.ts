@@ -21,6 +21,19 @@ export interface IUser {
   email: string;
   imageUrl: string;
   twits: mongoose.Types.ObjectId[] | string[];
-  likes: string[];
+  likes: mongoose.Types.ObjectId[] | string[];
   password?: string;
+  comments: mongoose.Types.ObjectId[] | string[];
+}
+
+export interface IComment {
+  _id: mongoose.Types.ObjectId | string;
+  authorId: mongoose.Types.ObjectId | string;
+  nickname: string;
+  email: string;
+  authorImageUrl: string;
+  twit: mongoose.Types.ObjectId | string;
+  comment: string;
+  likes: number;
+  views: number;
 }

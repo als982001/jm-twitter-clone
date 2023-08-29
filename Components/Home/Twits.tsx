@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Twit from "./Twit";
 import useGetTwits from "@/Hooks/useGetTwits";
+import { useRouter } from "next/navigation";
 
 const options = {
   threshold: 0.5,
@@ -8,6 +9,8 @@ const options = {
 
 export default function Twits() {
   const { twits, isLoading, addIndex } = useGetTwits();
+
+  const router = useRouter();
 
   const bottomRef = useRef(null);
 
@@ -24,7 +27,13 @@ export default function Twits() {
         <h1>Loading...</h1>
       ) : (
         twits.map((twit, index) => (
-          <Twit key={twit._id.toString()} twit={twit} />
+          <section
+            onClick={() => {
+              router.push(`/twit/${twit._id.toString()}`);
+            }}
+          >
+            <Twit key={twit._id.toString()} twit={twit} />
+          </section>
         ))
       )}
       <section

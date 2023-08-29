@@ -1,17 +1,10 @@
 "use client";
 
 import styles from "./SidebarUser.module.css";
-import { BsThreeDots } from "react-icons/bs";
-import LoginButton from "./LoginButton";
-import { getNameFromEmail } from "@/app/Functions/Functions";
-import { signOut } from "next-auth/react";
-import mongoose from "mongoose";
-import { ITwit, IUser } from "@/utils/types";
+import { IUser } from "@/utils/types";
 import MoreUserInfo from "./MoreUserInfo";
 import { Dispatch, SetStateAction, useState } from "react";
-import Overlay from "../Overlay";
-import useShowModal from "@/Hooks/useShowModal";
-import UserInfoModal from "../Modal/UserInfoModal";
+import { getNameFromEmail } from "@/utils/functions";
 
 interface IProps {
   user: IUser | null;

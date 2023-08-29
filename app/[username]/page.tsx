@@ -3,10 +3,7 @@
 import ProfileUserInfo from "@/Components/Profile/ProfileUserInfo";
 import styles from "./page.module.css";
 import ProfileMenu from "@/Components/Profile/ProfileMenu";
-import { getServerSession } from "next-auth";
 import { IUser } from "@/utils/types";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
 import { findUserByNickname } from "@/utils/userFunctions";
 
