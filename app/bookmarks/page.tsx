@@ -13,7 +13,7 @@ interface ISession {
 }
 
 export default async function Bookmakrs() {
-  const session: ISession | null = await getServerSession(authOptions);
+  const session: ISession | null = await getServerSession(authOptions as any);
 
   return (
     <main id={styles.main}>

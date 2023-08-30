@@ -1,5 +1,6 @@
 import useShowType from "@/Hooks/useShowType";
 import styles from "./header.module.css";
+import { notImplementedYet } from "@/utils/functions";
 
 export default function Header() {
   const [isRecommend, handleModeChange] = useShowType();
@@ -25,9 +26,12 @@ export default function Header() {
         </div>
         <div
           className={styles.header__bottom__button}
-          onClick={() =>
-            typeof handleModeChange === "function" && handleModeChange(false)
-          }
+          onClick={() => {
+            {
+              notImplementedYet();
+              typeof handleModeChange === "function" && handleModeChange(false);
+            }
+          }}
         >
           <h6
             className={styles.header__bottom__content}

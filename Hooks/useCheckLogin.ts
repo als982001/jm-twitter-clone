@@ -6,7 +6,7 @@ export default function useCheckLogin() {
   const [loginData, setLoginData] = useState<any>(null);
   useEffect(() => {
     const fetchSession = async () => {
-      const session = await getServerSession(authOptions);
+      const session = await getServerSession(authOptions as any);
       if (session) {
         setLoginData(session);
       } else {

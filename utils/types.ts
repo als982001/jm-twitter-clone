@@ -37,3 +37,14 @@ export interface IComment {
   likes: mongoose.Types.ObjectId[] | string[];
   views: number;
 }
+
+export interface ISession {
+  user: {
+    email: string;
+    _id: string;
+    nickname: string;
+    twits: string[];
+    imageUrl: string;
+  };
+  expires: string;
+}

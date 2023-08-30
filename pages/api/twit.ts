@@ -1,14 +1,11 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { connectDB } from "@/utils/database";
-import { getCurrentTime, getNameFromEmail } from "@/app/Functions/Functions";
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { ObjectId } from "mongodb";
-import { IUser } from "@/utils/types";
-
-interface ISession {
-  user: IUser;
-}
+import { ISession, IUser } from "@/utils/types";
+import { getCurrentTime } from "@/utils/functions";
 
 // 트윗을 게시하는 함수
 export default async function handler(
@@ -18,9 +15,9 @@ export default async function handler(
   let db = (await connectDB).db("portfolio");
 
   const session: ISession | null = await getServerSession(
-    req,
-    res,
-    authOptions
+    req as any,
+    res as any,
+    authOptions as any
   );
 
   if (session === null || session.user === null) {
@@ -29,7 +26,7 @@ export default async function handler(
 
   if (req.method === "POST") {
     try {
-      const newTwit = await JSON.parse(req.body);
+      const newTwit = req.body;
       const createdDate = getCurrentTime();
 
       if (newTwit.content.length === 0) {

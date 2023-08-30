@@ -1,3 +1,7 @@
+export function notImplementedYet() {
+  alert("아직 개발 중인 기능입니다.");
+}
+
 export function getNameFromEmail(email: string) {
   const name = email.split("@")[0];
 

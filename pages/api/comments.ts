@@ -2,7 +2,7 @@ import { connectDB } from "@/utils/database";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
-import { IUser } from "@/utils/types";
+import { ISession, IUser } from "@/utils/types";
 import { ObjectId } from "mongodb";
 
 export default async function handler(
@@ -12,7 +12,11 @@ export default async function handler(
   const db = (await connectDB).db("portfolio");
 
   if (req.method === "POST") {
-    const session = await getServerSession(req, res, authOptions);
+    const session: ISession | null = await getServerSession(
+      req as any,
+      res as any,
+      authOptions as any
+    );
 
     if (session === null || session.user === null) {
       return res.status(401).json("로그인 후 다시 시도해주세요.");

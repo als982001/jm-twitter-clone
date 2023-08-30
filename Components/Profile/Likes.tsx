@@ -12,7 +12,9 @@ const options = {
 };
 
 export default function Likes({ user }: IProps) {
-  const { twits, isLoading, addIndex } = useGetLikesByUser(user.likes);
+  const { twits, isLoading, addIndex } = useGetLikesByUser(
+    user.likes as string[]
+  );
 
   const bottomRef = useRef(null);
 

@@ -27,14 +27,7 @@ export default function Twits() {
         <h1>Loading...</h1>
       ) : (
         twits.map((twit, index) => (
-          <section
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              router.push(`/twit/${twit._id.toString()}`);
-            }}
-          >
-            <Twit key={twit._id.toString()} twit={twit} />
-          </section>
+          <Twit key={twit._id.toString()} twit={twit} />
         ))
       )}
       <section

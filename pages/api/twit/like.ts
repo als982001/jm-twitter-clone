@@ -3,6 +3,7 @@ import { ObjectId } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
+import { ISession } from "@/utils/types";
 
 // 트윗을 게시하는 함수
 export default async function handler(
@@ -11,7 +12,11 @@ export default async function handler(
 ) {
   let db = (await connectDB).db("portfolio");
 
-  const session = await getServerSession(req, res, authOptions);
+  const session: ISession | null = await getServerSession(
+    req as any,
+    res as any,
+    authOptions as any
+  );
 
   if (session === null || session.user === null) {
     return res.status(401).json("로그인 후 다시 시도해주세요.");

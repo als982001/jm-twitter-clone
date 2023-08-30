@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { twits } from "../../dummydatas/twits";
 import { connectDB } from "@/utils/database";
 
 // 트윗들을 받아오는 함수

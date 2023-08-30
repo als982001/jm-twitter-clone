@@ -53,6 +53,9 @@ export const postTwit = async (newTwit: {
   try {
     const response = await fetch(`${BACK}/twit`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(newTwit),
     });
 

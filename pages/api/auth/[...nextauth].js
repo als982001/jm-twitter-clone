@@ -7,10 +7,10 @@ import bcrypt from "bcrypt";
 
 export const authOptions = {
   providers: [
-    GithubProvider({
+    /* GithubProvider({
       clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
       clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
-    }),
+    }), */
 
     CredentialsProvider({
       //1. 로그인페이지 폼 자동생성해주는 코드
