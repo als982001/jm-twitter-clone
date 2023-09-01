@@ -1,3 +1,5 @@
+import { IImageResponse } from "./types";
+
 export function notImplementedYet() {
   alert("아직 개발 중인 기능입니다.");
 }
@@ -28,10 +30,10 @@ export function getCurrentTime() {
 export const getImageUrl = async (imageName: string, image: File) => {
   imageName = encodeURIComponent(imageName);
 
-  let uploadResponse = await fetch(
+  let result = await fetch(
     `http://localhost:3000/api/post/image?file=${imageName}`
   );
-  uploadResponse = await uploadResponse.json();
+  let uploadResponse: IImageResponse = await result.json();
 
   //S3 업로드
   const formData = new FormData();

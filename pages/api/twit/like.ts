@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 import { ISession } from "@/utils/types";
+import mongoose from "mongoose";
 
 // 트윗을 게시하는 함수
 export default async function handler(
@@ -62,8 +63,10 @@ export default async function handler(
       return res.status(400).json("해당 트윗을 찾을 수 없습니다.");
     }
 
+    const likes: mongoose.Types.ObjectId[] = twit.likes;
+
     // ObjectId는 객체이기에 문자열로 바꾼 후, 비교해야 함
-    const included = twit.likes
+    const included = likes
       .map((id) => id.toString())
       .includes(user._id.toString());
 

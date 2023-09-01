@@ -21,7 +21,8 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": [
     "next-env.d.ts",
@@ -29,7 +30,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "pages/api/post/image.ts",
-    "utils/database.js"
+    "utils/database.ts"
   ],
   "exclude": ["node_modules"]
 }

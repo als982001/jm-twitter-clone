@@ -1,17 +1,20 @@
-import { MongoClient, MongoClientOptions, Db } from "mongodb";
+/*
+import { MongoClient, MongoClientOptions } from "mongodb";
 import { ConnectOptions } from "mongoose";
-
 const url =
   "mongodb+srv://als982001:rnlcksgdk18@cluster0.cysggjr.mongodb.net/?retryWrites=true&w=majority";
-// const options: MongoClientOptions = { useNewUrlParser: true };
+// const options: MongoClientOptions & ConnectOptions = { useNewUrlParser: true };
 const options = { useNewUrlParser: true } as MongoClientOptions &
   ConnectOptions;
 
 let connectDB: Promise<MongoClient>;
 
-// TypeScript에서 global 객체에 속성을 추가할 때는 확장할 수 있습니다.
 declare global {
-  var _mongo: Promise<MongoClient> | undefined;
+  namespace NodeJS {
+    interface Global {
+      _mongo: Promise<MongoClient> | undefined;
+    }
+  }
 }
 
 if (process.env.NODE_ENV === "development") {
@@ -24,3 +27,4 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export { connectDB };
+*/
