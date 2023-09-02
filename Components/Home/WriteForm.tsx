@@ -1,5 +1,4 @@
 import styles from "./write.module.css";
-import usePostTwit from "@/Hooks/usePostTwit";
 import { BsImage } from "react-icons/bs";
 import {
   AiOutlineFileGif,

@@ -1,6 +1,6 @@
 import { IImageResponse } from "./types";
 
-const BACK = "http://127.0.0.1:3000/api";
+const BACK = "http://localhost:3000/api";
 
 export function notImplementedYet() {
   alert("아직 개발 중인 기능입니다.");

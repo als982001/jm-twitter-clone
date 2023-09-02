@@ -1,9 +1,4 @@
-import {
-  usePathname,
-  useSearchParams,
-  useParams,
-  useRouter,
-} from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function useShowDetail() {
   const router = useRouter();

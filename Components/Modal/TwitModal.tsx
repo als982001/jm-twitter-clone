@@ -1,5 +1,4 @@
 import usePostTwit from "@/Hooks/usePostTwit";
-import Write from "../Home/Write";
 import WriteForm from "../Home/WriteForm";
 import styles from "./TwitModal.module.css";
 import { Dispatch, SetStateAction, useEffect } from "react";

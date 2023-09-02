@@ -4,9 +4,6 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./page.module.css";
 import useGetTwit from "@/Hooks/useGetTwit";
 import Twit from "@/Components/Home/Twit";
-import CommentInput from "@/Components/Twit/CommentInput";
-import { ITwit } from "@/utils/types";
-import Comments from "@/Components/Twit/Comments";
 import { useRouter } from "next/navigation";
 import CommentSpace from "@/Components/Twit/CommentSpace";
 

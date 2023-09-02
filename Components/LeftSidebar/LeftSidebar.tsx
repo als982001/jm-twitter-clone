@@ -2,16 +2,13 @@
 
 import styles from "./LeftSidebar.module.css";
 import SidebarUser from "./SidebarUser";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getServerSession } from "next-auth";
-import { ITwit, IUser } from "@/utils/types";
+import { IUser } from "@/utils/types";
 import TwitButton from "./TwitButton";
 import Menus from "./Menus";
 import Icon from "./Icon";
 import useGetUserInfo from "@/Hooks/useGetUserInfo";
 import Overlay from "../Overlay";
 import TwitModal from "../Modal/TwitModal";
-import useShowModal from "@/Hooks/useShowModal";
 import { useState } from "react";
 import UserInfoModal from "../Modal/UserInfoModal";
 
