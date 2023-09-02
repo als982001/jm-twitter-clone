@@ -1,5 +1,7 @@
 import { IImageResponse } from "./types";
 
+const BACK = "http://127.0.0.1:3000/api";
+
 export function notImplementedYet() {
   alert("아직 개발 중인 기능입니다.");
 }
@@ -30,9 +32,7 @@ export function getCurrentTime() {
 export const getImageUrl = async (imageName: string, image: File) => {
   imageName = encodeURIComponent(imageName);
 
-  let result = await fetch(
-    `http://localhost:3000/api/post/image?file=${imageName}`
-  );
+  let result = await fetch(`${BACK}/post/image?file=${imageName}`);
   let uploadResponse: IImageResponse = await result.json();
 
   //S3 업로드
@@ -57,7 +57,7 @@ export const getImageUrl = async (imageName: string, image: File) => {
 
 export const checkLogin = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/checkLogin");
+    const response = await fetch(`${BACK}/checkLogin`);
 
     const data = await response.json();
 
@@ -69,7 +69,7 @@ export const checkLogin = async () => {
 
 export const getUserInfo = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/get/userinfo");
+    const response = await fetch(`${BACK}/get/userinfo`);
 
     const data = await response.json();
 

@@ -1,4 +1,4 @@
-const BACK = "http://localhost:3000/api";
+const BACK = "http://127.0.0.1:3000/api";
 
 export const join = async (joinInfo: {
   email: string;
