@@ -1,18 +1,9 @@
+import { getRecommendFollows } from "@/utils/otherDataFunctions";
 import styles from "./Recommend.module.css";
 import RecommendFollow from "./RecommendFollow";
 
-interface IRecommendFollows {
-  id: string;
-  nickname: string;
-  icon: string;
-}
-
 export default async function RecommendFollows() {
-  const response = await fetch("http://localhost:3000/api/recommend-follows", {
-    method: "GET",
-  });
-
-  const recommends: IRecommendFollows[] = await response.json();
+  const recommends = await getRecommendFollows();
 
   return (
     <section className={styles.sidebar__container}>

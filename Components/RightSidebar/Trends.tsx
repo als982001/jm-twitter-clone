@@ -1,18 +1,9 @@
 import styles from "./Trends.module.css";
 import Trend from "./Trend";
-
-interface ITrends {
-  id: number;
-  content: string;
-  twitNum: number;
-}
+import { getTrends } from "@/utils/otherDataFunctions";
 
 export default async function Trends() {
-  const response = await fetch("http://localhost:3000/api/trends", {
-    method: "GET",
-    cache: "no-store",
-  });
-  const trends: ITrends[] = await response.json();
+  const trends = await getTrends();
 
   return (
     <section className={styles.sidebar__container}>
