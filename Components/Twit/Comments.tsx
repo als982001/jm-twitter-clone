@@ -7,7 +7,10 @@ interface IProps {
   newComments: IComment[];
 }
 
-export default function Comments({ commentIds, newComments }: IProps) {
+export default function Comments({
+  commentIds = [],
+  newComments = [],
+}: IProps) {
   const { isLoading, comments } = useGetComments(commentIds);
 
   return (

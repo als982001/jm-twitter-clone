@@ -5,7 +5,9 @@ interface IProps {
   trend: { id: number; content: string; twitNum: number };
 }
 
-export default function Trend({ trend }: IProps) {
+export default function Trend({
+  trend = { id: 0, content: "", twitNum: 0 },
+}: IProps) {
   return (
     <section id={styles.sidebar__trend__container}>
       <h6 id={styles.sidebar__trend__location}>대한민국에서 트렌드 중</h6>

@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./SidebarUser.module.css";
-import { IUser } from "@/utils/types";
+import { IUser, defaultUser } from "@/utils/types";
 import MoreUserInfo from "./MoreUserInfo";
 import { Dispatch, SetStateAction, useState } from "react";
 import { getNameFromEmail } from "@/utils/functions";
@@ -11,7 +11,10 @@ interface IProps {
   setShowUserModal: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function SidebarUser({ user, setShowUserModal }: IProps) {
+export default function SidebarUser({
+  user = defaultUser,
+  setShowUserModal,
+}: IProps) {
   return (
     <>
       {user && (

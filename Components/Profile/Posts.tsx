@@ -10,7 +10,7 @@ const options = {
   threshold: 0.5,
 };
 
-export default function Posts({ nickname }: IProps) {
+export default function Posts({ nickname = "" }: IProps) {
   const { twits, isLoading, addIndex } = useGetTwitsByUser(nickname);
 
   const bottomRef = useRef(null);

@@ -1,4 +1,4 @@
-import { ITwit } from "@/utils/types";
+import { ITwit, defaultTwit } from "@/utils/types";
 import styles from "./Twit.module.css";
 import TwitImages from "./TwitImages";
 import TwitUtils from "./TwitUtils";
@@ -8,7 +8,7 @@ interface IProps {
   twit: ITwit;
 }
 
-export default function Twit({ twit }: IProps) {
+export default function Twit({ twit = defaultTwit }: IProps) {
   const { showDetail } = useShowDetail();
 
   return (

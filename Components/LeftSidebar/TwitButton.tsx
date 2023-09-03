@@ -8,7 +8,7 @@ interface IProps {
   onClick: () => void;
 }
 
-export default function TwitButton({ onClick }: IProps) {
+export default function TwitButton({ onClick = () => {} }: IProps) {
   return (
     <button onClick={onClick} id={styles.sidebar__twit__button}>
       트윗하기

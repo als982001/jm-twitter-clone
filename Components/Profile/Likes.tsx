@@ -1,5 +1,5 @@
 import useGetLikesByUser from "@/Hooks/useGetLikesByUser";
-import { IUser } from "@/utils/types";
+import { IUser, defaultUser } from "@/utils/types";
 import { useEffect, useRef } from "react";
 import Twit from "../Home/Twit";
 
@@ -11,7 +11,7 @@ const options = {
   threshold: 0.5,
 };
 
-export default function Likes({ user }: IProps) {
+export default function Likes({ user = defaultUser }: IProps) {
   const { twits, isLoading, addIndex } = useGetLikesByUser(
     user.likes as string[]
   );

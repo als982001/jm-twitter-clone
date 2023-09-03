@@ -1,4 +1,4 @@
-import { IUser } from "@/utils/types";
+import { IUser, defaultUser } from "@/utils/types";
 import styles from "./UserInfoModal.module.css";
 import UserModalLogout from "../Global/UserModalLogout";
 
@@ -6,7 +6,7 @@ interface IProps {
   user: IUser;
 }
 
-export default function userModal({ user }: IProps) {
+export default function userModal({ user = defaultUser }: IProps) {
   return (
     <section id={styles.container}>
       <section id={styles.user}>

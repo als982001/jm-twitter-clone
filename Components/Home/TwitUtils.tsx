@@ -1,4 +1,4 @@
-import { ITwit } from "@/utils/types";
+import { ITwit, defaultTwit } from "@/utils/types";
 import styles from "./Twit.module.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
@@ -9,7 +9,7 @@ interface IProps {
   twit: ITwit;
 }
 
-export default function TwitUtils({ twit }: IProps) {
+export default function TwitUtils({ twit = defaultTwit }: IProps) {
   const { handlePostLike, likesNum } = useTwitUtil(twit);
 
   return (

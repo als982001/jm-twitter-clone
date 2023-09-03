@@ -1,5 +1,5 @@
 import styles from "./Comment.module.css";
-import { IComment } from "@/utils/types";
+import { IComment, defaultComment } from "@/utils/types";
 import { getNameFromEmail } from "@/utils/functions";
 import CommentUtils from "./CommentUtils";
 
@@ -7,7 +7,7 @@ interface IProps {
   comment: IComment;
 }
 
-export default function Comment({ comment }: IProps) {
+export default function Comment({ comment = defaultComment }: IProps) {
   return (
     <li id={styles.wrapper}>
       <img id={styles.icon} src={comment.authorImageUrl} alt="user-icon" />

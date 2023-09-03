@@ -8,7 +8,9 @@ interface IProps {
   };
 }
 
-export default function RecommendFollow({ recommend }: IProps) {
+export default function RecommendFollow({
+  recommend = { id: "", nickname: "", icon: "" },
+}: IProps) {
   return (
     <section id={styles.sidebar__recommend__container}>
       <section id={styles.sidebar__recommend__userinfo}>

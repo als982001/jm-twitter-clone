@@ -10,6 +10,6 @@ interface IProps {
   onClick: () => void;
 }
 
-export default function TempMoreTwit({ onClick }: IProps) {
+export default function TempMoreTwit({ onClick = () => {} }: IProps) {
   return <Button onClick={onClick}>더 보기!</Button>;
 }

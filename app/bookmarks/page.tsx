@@ -3,11 +3,6 @@ import styles from "./page.module.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-interface ICheckLogin {
-  status: number;
-  data: IUser;
-}
-
 interface ISession {
   user: IUser;
 }

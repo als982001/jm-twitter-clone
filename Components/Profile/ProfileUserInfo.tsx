@@ -1,11 +1,11 @@
-import { IUser } from "@/utils/types";
+import { IUser, defaultUser } from "@/utils/types";
 import styles from "../../app/[username]/page.module.css";
 
 interface IProps {
   user: IUser;
 }
 
-export default function ProfileUserInfo({ user }: IProps) {
+export default function ProfileUserInfo({ user = defaultUser }: IProps) {
   return (
     <section id={styles.profile__profile}>
       <img id={styles.profile__user__icon} src={user.imageUrl} />

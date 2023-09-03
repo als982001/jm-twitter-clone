@@ -2,14 +2,14 @@ import styles from "./Comment.module.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { VscGraph } from "react-icons/vsc";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
-import { IComment } from "@/utils/types";
+import { IComment, defaultComment } from "@/utils/types";
 import useCommentUtil from "@/Hooks/useCommentUtil";
 
 interface IProps {
   comment: IComment;
 }
 
-export default function CommentUtils({ comment }: IProps) {
+export default function CommentUtils({ comment = defaultComment }: IProps) {
   const { handlePostCommentLike, likesNum } = useCommentUtil(
     comment.likes.length
   );

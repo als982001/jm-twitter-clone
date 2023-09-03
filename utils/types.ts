@@ -15,6 +15,21 @@ export interface ITwit {
   createdDate: string;
 }
 
+export const defaultTwit: ITwit = {
+  _id: "",
+  id: "",
+  nickname: "",
+  authorId: "",
+  authorIcon: "",
+  email: "",
+  twit: "",
+  imageUrl: "",
+  likes: [],
+  comments: [],
+  views: 0,
+  createdDate: "",
+};
+
 export interface IUser {
   _id: mongoose.Types.ObjectId | string;
   nickname: string;
@@ -25,6 +40,17 @@ export interface IUser {
   password?: string;
   comments: mongoose.Types.ObjectId[] | string[];
 }
+
+export const defaultUser: IUser = {
+  _id: "",
+  nickname: "",
+  email: "",
+  imageUrl: "",
+  twits: [],
+  likes: [],
+  password: "",
+  comments: [],
+};
 
 export interface IComment {
   _id: mongoose.Types.ObjectId | string;
@@ -37,6 +63,18 @@ export interface IComment {
   likes: mongoose.Types.ObjectId[] | string[];
   views: number;
 }
+
+export const defaultComment: IComment = {
+  _id: "",
+  authorId: "",
+  nickname: "",
+  email: "",
+  authorImageUrl: "",
+  twit: "",
+  comment: "",
+  likes: [],
+  views: 0,
+};
 
 export interface ISession {
   user: {

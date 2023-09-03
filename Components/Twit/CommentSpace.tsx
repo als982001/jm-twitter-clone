@@ -1,4 +1,4 @@
-import { IComment, ITwit } from "@/utils/types";
+import { IComment, ITwit, defaultTwit } from "@/utils/types";
 import CommentInput from "./CommentInput";
 import Comments from "./Comments";
 import { useState } from "react";
@@ -7,7 +7,7 @@ interface IProps {
   twit: ITwit;
 }
 
-export default function CommentSpace({ twit }: IProps) {
+export default function CommentSpace({ twit = defaultTwit }: IProps) {
   const [newComments, setNewComments] = useState<IComment[]>([]);
 
   return (

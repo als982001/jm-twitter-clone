@@ -7,7 +7,7 @@ import Replies from "./Replies";
 import Highlights from "./Highlights";
 import Media from "./Media";
 import Likes from "./Likes";
-import { IUser } from "@/utils/types";
+import { IUser, defaultUser } from "@/utils/types";
 
 interface IProps {
   user: IUser;
@@ -19,7 +19,7 @@ const HIGHLIGHTS = "highlights";
 const MEDIA = "media";
 const LIKES = "likes";
 
-export default function ProfileMenu({ user }: IProps) {
+export default function ProfileMenu({ user = defaultUser }: IProps) {
   const { menu, selectMenu } = useSelectProfileMenu();
 
   return (

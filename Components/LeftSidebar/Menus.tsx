@@ -9,13 +9,13 @@ import styles from "./LeftSidebar.module.css";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { BsBell, BsBookmark } from "react-icons/bs";
 import { CiCircleMore, CiViewList } from "react-icons/ci";
-import { IUser } from "@/utils/types";
+import { IUser, defaultUser } from "@/utils/types";
 
 interface IProps {
   userInfo: IUser | null;
 }
 
-export default function Menus({ userInfo }: IProps) {
+export default function Menus({ userInfo = defaultUser }: IProps) {
   return (
     <>
       <Menu path="/">

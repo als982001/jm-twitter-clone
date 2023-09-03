@@ -2,7 +2,7 @@ interface IProps {
   onClick: () => void;
 }
 
-export default function Overlay({ onClick }: IProps) {
+export default function Overlay({ onClick = () => {} }: IProps) {
   return (
     <section
       style={{

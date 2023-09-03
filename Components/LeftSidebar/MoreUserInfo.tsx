@@ -6,7 +6,7 @@ interface IProps {
   onClick: () => void;
 }
 
-export default function MoreUserInfo({ onClick }: IProps) {
+export default function MoreUserInfo({ onClick = () => {} }: IProps) {
   return (
     <BsThreeDots className={styles.sidebar__user__etc} onClick={onClick} />
   );

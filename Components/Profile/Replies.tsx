@@ -11,7 +11,7 @@ const options = {
   threshold: 0.5,
 };
 
-export default function Replies({ nickname }: IProps) {
+export default function Replies({ nickname = "" }: IProps) {
   const { comments, isLoading, addIndex } = useGetCommentsByUesr(nickname);
 
   const bottomRef = useRef(null);
