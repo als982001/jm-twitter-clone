@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
-const BACK = "http://localhost:3000/api";
 
 export const getTwit = async (twitId: string) => {
   try {
-    const response = await fetch(`${BACK}/twit?twitId=${twitId}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/twit?twitId=${twitId}`,
+      {
+        method: "GET",
+      }
+    );
 
     const data = await response.json();
 
@@ -17,9 +19,12 @@ export const getTwit = async (twitId: string) => {
 
 export const getTwitsFromIndex = async (idx: number) => {
   try {
-    const response = await fetch(`${BACK}/twits?idx=${idx}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/twits?idx=${idx}`,
+      {
+        method: "GET",
+      }
+    );
 
     const data = await response.json();
 
@@ -32,7 +37,7 @@ export const getTwitsFromIndex = async (idx: number) => {
 export const getTwitsByNickname = async (idx: number, nickname: string) => {
   try {
     const response = await fetch(
-      `${BACK}/twits?idx=${idx}&nickname=${nickname}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/twits?idx=${idx}&nickname=${nickname}`,
       {
         method: "GET",
       }
@@ -51,7 +56,7 @@ export const postTwit = async (newTwit: {
   content: string;
 }) => {
   try {
-    const response = await fetch(`${BACK}/twit`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/twit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,9 +74,12 @@ export const postTwit = async (newTwit: {
 
 export const postLike = async (twitId: mongoose.Types.ObjectId | string) => {
   try {
-    const response = await fetch(`${BACK}/twit/like?twitId=${twitId}`, {
-      method: "PATCH",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/twit/like?twitId=${twitId}`,
+      {
+        method: "PATCH",
+      }
+    );
 
     const data = await response.json();
 
@@ -86,13 +94,16 @@ export const postComment = async (
   comment: string
 ) => {
   try {
-    const response = await fetch(`${BACK}/comments?twitId=${twitId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(comment),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/comments?twitId=${twitId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(comment),
+      }
+    );
 
     const data = await response.json();
 
@@ -104,13 +115,16 @@ export const postComment = async (
 
 export const getComments = async (commentIds: string[]) => {
   try {
-    const response = await fetch(`${BACK}/get/comments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(commentIds),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/get/comments`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(commentIds),
+      }
+    );
 
     const data = await response.json();
 
@@ -125,7 +139,7 @@ export const postCommentLike = async (
 ) => {
   try {
     const response = await fetch(
-      `${BACK}/comments/like?commentId=${commentId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/comments/like?commentId=${commentId}`,
       {
         method: "PATCH",
       }
@@ -142,7 +156,7 @@ export const postCommentLike = async (
 export const getCommentsByNickname = async (nickname: string, idx: number) => {
   try {
     const response = await fetch(
-      `${BACK}/comments?idx=${idx}&nickname=${nickname}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/comments?idx=${idx}&nickname=${nickname}`,
       {
         method: "GET",
       }

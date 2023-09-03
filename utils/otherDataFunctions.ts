@@ -12,7 +12,7 @@ interface IRecommendFollows {
 
 export const getTrends = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/trends", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/trends`, {
       method: "GET",
       cache: "no-store",
     });
@@ -27,7 +27,7 @@ export const getTrends = async () => {
 export const getRecommendFollows = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/recommend-follows",
+      `${process.env.NEXT_PUBLIC_API_URL}/recommend-follows`,
       {
         method: "GET",
       }

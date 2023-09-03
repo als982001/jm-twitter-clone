@@ -1,5 +1,3 @@
-const BACK = "http://localhost:3000/api";
-
 export const join = async (joinInfo: {
   email: string;
   nickname: string;
@@ -8,10 +6,13 @@ export const join = async (joinInfo: {
   imageUrl: string;
 }) => {
   try {
-    const response = await fetch("http://localhost:3000/api/auth/join", {
-      method: "POST",
-      body: JSON.stringify(joinInfo),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/join`,
+      {
+        method: "POST",
+        body: JSON.stringify(joinInfo),
+      }
+    );
 
     const data = await response.json();
 
@@ -24,7 +25,7 @@ export const join = async (joinInfo: {
 export const findUserByNickname = async (nickname: string) => {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/userinfo?nickname=${nickname}`
+      `${process.env.NEXT_PUBLIC_API_URL}/userinfo?nickname=${nickname}`
     );
 
     const data = await response.json();
@@ -37,7 +38,7 @@ export const findUserByNickname = async (nickname: string) => {
 
 export const getLikeTwitsByUser = async (likes: string[], idx: number) => {
   try {
-    const response = await fetch(`${BACK}/likes`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/likes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
